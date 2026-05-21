@@ -1,0 +1,110 @@
+Work Product Manifest File
+
+This manifest file is an administrative metadata document produced
+by OASIS Staff as part of the approved Work Product publication
+process.  It provides detailed information about the artifacts
+which constitute the Work Product in any published release, viz.,
+for each specific level of approval (csd01, csd02, cs01, cos, etc).
+
+Users may find the manifest file useful in the following situations,
+or similar situations, to help answer basic questions:
+
+1) "Can I examine the extent/content/structure of the published Work
+   Product without having to download the distribution package from
+   the OASIS Library and then UNzip the entire canonical release
+   package from the ZIP format?"  Yes: scan the manifest file
+   published in any release directory (e.g. in /csd01/, /csprd02/)
+   and inspect the section "ZIP archive contents"
+
+2) "Someone sent me an XML schema file for the level CS01 instance
+   of an OASIS specification: how can I determine whether this
+   schema file is identical to the one published by OASIS?"
+   Compute the MD5 or SHA-1 digest for the file you have, and
+   compare it to the value(s) presented in the manifest file.
+
+===============================
+Contents of this manifest file
+===============================
+
+  - Essential bibliographic information
+  - ZIP archive listing for contents and storage hierarchy
+  - Digest/hash values (MD5, SHA-1) for files in the release directory
+
+* Note that the digest/hash values are not intended to support
+security per se: they are provided simply for casual checking
+of a local file's hash value against the published file to
+detect disk corruption or other non-malicious alteration.
+
+* Note that the MD5/SHA-1 digest/hash values for primary ".html" format
+files in the OASIS Library release directory, as displayed below, are
+computed for OASIS server function, whereas the same ".html" files
+included in the ZIP package file, as prepared for local use, vary by a
+few bytes. The ZIP archive contents listing includes the digest/hash
+(CRC-32) and byte count for these ".html" files in the ZIP package.
+
+======================================
+Essential bibliographic information
+======================================
+
+Key Management Interoperability Protocol Specification Version 1.4 Errata 01
+OASIS Approved Errata
+18 July 2019
+Copyright (c) OASIS Open 2019.  All Rights Reserved.
+Produced by:  OASIS Key Management Interoperability Protocol (KMIP) TC
+              https://www.oasis-open.org/committees/kmip/
+Release URI:  https://docs.oasis-open.org/kmip/spec/v1.4/errata01/os/kmip-spec-v1.4-errata01-os.zip
+Manifest URI: https://docs.oasis-open.org/kmip/spec/v1.4/errata01/os/kmip-spec-v1.4-errata01-os-manifest.txt
+
+===========================
+ZIP archive contents
+===========================
+
+Archive:  kmip-spec-v1.4-errata01-os.zip
+ Length   Method    Size  Cmpr    Date    Time   CRC-32   Name
+--------  ------  ------- ---- ---------- ----- --------  ----
+   46898  Defl:N    42519   9% 07-18-2019 16:00 bb42e84e  kmip-spec-v1.4-errata01-os.docx
+       0  Stored        0   0% 07-18-2019 16:00 00000000  kmip-spec-v1.4-errata01-os_files/
+    4046  Defl:N     3999   1% 07-18-2019 16:00 5fa672cc  kmip-spec-v1.4-errata01-os_files/image001.jpg
+   52696  Defl:N     9884  81% 07-18-2019 16:00 1b83dbdc  kmip-spec-v1.4-errata01-os.html
+  271530  Defl:N   197280  27% 07-18-2019 16:00 93ca4a18  kmip-spec-v1.4-errata01-os.pdf
+  490394  Defl:N   482003   2% 07-18-2019 16:00 9fd00fb2  kmip-spec-v1.4-errata01-os-redlined.docx
+       0  Stored        0   0% 07-18-2019 16:00 00000000  kmip-spec-v1.4-errata01-os-redlined_files/
+    4046  Defl:N     3999   1% 07-18-2019 16:00 5fa672cc  kmip-spec-v1.4-errata01-os-redlined_files/image001.jpg
+    8436  Defl:N     6519  23% 07-18-2019 16:00 61428021  kmip-spec-v1.4-errata01-os-redlined_files/image003.jpg
+     753  Defl:N      752   0% 07-18-2019 16:00 454530bd  kmip-spec-v1.4-errata01-os-redlined_files/image002.png
+ 3468722  Defl:N   188252  95% 07-18-2019 16:00 ae63f3db  kmip-spec-v1.4-errata01-os-redlined.html
+ 7081907  Defl:N  2316711  67% 07-18-2019 16:00 6fe2a384  kmip-spec-v1.4-errata01-os-redlined.pdf
+--------          -------  ---                            -------
+11429428          3251918  72%                            12 files
+
+========================================================================
+MD5 digest/hash values for files in the OASIS Library release directory
+========================================================================
+
+dca70c817837d01d683ba3afdb8132e3  kmip-spec-v1.4-errata01-os.docx
+fcad627b0381c84189f9547fcdedd0d1  kmip-spec-v1.4-errata01-os_files/image001.jpg
+fbe5b1a6fcf583d50a929a9909572809  kmip-spec-v1.4-errata01-os.html
+f4a96bd2a9c30ae81eb01f887d621c9d  kmip-spec-v1.4-errata01-os.pdf
+cbff0aad550ae8dbb03b54c9626811ad  kmip-spec-v1.4-errata01-os-redlined.docx
+fcad627b0381c84189f9547fcdedd0d1  kmip-spec-v1.4-errata01-os-redlined_files/image001.jpg
+d65862ab6e665aabaf5130919b330beb  kmip-spec-v1.4-errata01-os-redlined_files/image002.png
+041baafcdc8ea93b3a4ecec3fb7f7235  kmip-spec-v1.4-errata01-os-redlined_files/image003.jpg
+6f9f93dd65af4b7f5e4bc0de77a5af24  kmip-spec-v1.4-errata01-os-redlined.html
+1ed4ceba7ecc1604d0ed04b95b80a861  kmip-spec-v1.4-errata01-os-redlined.pdf
+9d2208e60b8fee4e8e936539035181c8  kmip-spec-v1.4-errata01-os.zip
+
+==========================================================================
+SHA-1 digest/hash values for files in the OASIS Library release directory
+==========================================================================
+
+efb40b29f5de4cd6024ef444d73f334e0582bb1a  kmip-spec-v1.4-errata01-os.docx
+32a0a1f3d735626eb528617f0f5d191bbfed26ae  kmip-spec-v1.4-errata01-os_files/image001.jpg
+c0e3b9cb36003bba95d6da895d93ec8f87a1ede2  kmip-spec-v1.4-errata01-os.html
+fc65e4bfe91334ccf8795b035ff65f70d49504a1  kmip-spec-v1.4-errata01-os.pdf
+5eb2aa4508fb229ac1725f619c61d4bb2d8af0db  kmip-spec-v1.4-errata01-os-redlined.docx
+32a0a1f3d735626eb528617f0f5d191bbfed26ae  kmip-spec-v1.4-errata01-os-redlined_files/image001.jpg
+5d0b6c15a98ac73f692756bc1d6c3d3490e275ef  kmip-spec-v1.4-errata01-os-redlined_files/image002.png
+7e31e96f836c617b5e581721ef193c5e541c4325  kmip-spec-v1.4-errata01-os-redlined_files/image003.jpg
+3af9c6389426e820a7b63b600d8d2d2554815986  kmip-spec-v1.4-errata01-os-redlined.html
+12f59de3262824e796068f1f8ed3fbdeba40e567  kmip-spec-v1.4-errata01-os-redlined.pdf
+37ec7967489ba0ec221c21e26f63c6b4ad4ab464  kmip-spec-v1.4-errata01-os.zip

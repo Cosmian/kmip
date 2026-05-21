@@ -1,0 +1,91 @@
+Work Product Manifest File
+
+This manifest file is an administrative metadata document produced
+by OASIS Staff as part of the approved Work Product publication
+process.  It provides detailed information about the artifacts
+which constitute the Work Product in any published release, viz.,
+for each specific level of approval (csd01, csd02, cs01, cos, etc).
+
+Users may find the manifest file useful in the following situations,
+or similar situations, to help answer basic questions:
+
+1) "Can I examine the extent/content/structure of the published Work
+   Product without having to download the distribution package from
+   the OASIS Library and then UNzip the entire canonical release
+   package from the ZIP format?"  Yes: scan the manifest file
+   published in any release directory (e.g. in /csd01/, /csprd02/)
+   and inspect the section "ZIP archive contents"
+
+2) "Someone sent me an XML schema file for the level CS01 instance
+   of an OASIS specification: how can I determine whether this
+   schema file is identical to the one published by OASIS?"
+   Compute the MD5 or SHA-1 digest for the file you have, and
+   compare it to the value(s) presented in the manifest file.
+
+===============================
+Contents of this manifest file
+===============================
+
+  - Essential bibliographic information
+  - ZIP archive listing for contents and storage hierarchy
+  - Digest/hash values (MD5, SHA-1) for files in the release directory
+
+* Note that the digest/hash values are not intended to support
+security per se: they are provided simply for casual checking
+of a local file's hash value against the published file to
+detect disk corruption or other non-malicious alteration.
+
+* Note that the MD5/SHA-1 digest/hash values for primary ".html" format
+files in the OASIS Library release directory, as displayed below, are
+computed for OASIS server function, whereas the same ".html" files
+included in the ZIP package file, as prepared for local use, vary by a
+few bytes. The ZIP archive contents listing includes the digest/hash
+(CRC-32) and byte count for these ".html" files in the ZIP package.
+
+======================================
+Essential bibliographic information
+======================================
+
+Key Management Interoperability Protocol Profiles Version 1.1 Errata 01
+Committee Specification Draft 01 / Public Review Draft 01
+22 August 2013
+Copyright (c) OASIS Open 2013.  All Rights Reserved.
+Produced by:  OASIS Key Management Interoperability Protocol (KMIP) TC
+              http://www.oasis-open.org/committees/kmip/
+Release URI:  http://docs.oasis-open.org/kmip/profiles/v1.1/errata01/csprd01/kmip-profiles-v1.1-errata01-csprd01.zip
+Manifest URI: http://docs.oasis-open.org/kmip/profiles/v1.1/errata01/csprd01/kmip-profiles-v1.1-errata01-csprd01-manifest.txt
+
+===========================
+ZIP archive contents
+===========================
+
+Archive:  kmip-profiles-v1.1-errata01-csprd01.zip
+ Length   Method    Size  Ratio   Date   Time   CRC-32    Name
+--------  ------  ------- -----   ----   ----   ------    ----
+   88576  Defl:N    26182  70%  08-22-13 12:00  d5ea3d76  kmip-profiles-v1.1-errata01-csprd01.doc
+       0  Stored        0   0%  08-22-13 12:00  00000000  kmip-profiles-v1.1-errata01-csprd01_files/
+    3854  Defl:N     3669   5%  08-22-13 12:00  15805297  kmip-profiles-v1.1-errata01-csprd01_files/image001.jpg
+   50406  Defl:N     8577  83%  08-22-13 12:00  2598d8c5  kmip-profiles-v1.1-errata01-csprd01.html
+  234389  Defl:N   207146  12%  08-22-13 12:00  f680e093  kmip-profiles-v1.1-errata01-csprd01.pdf
+--------          -------  ---                            -------
+  377225           245574  35%                            5 files
+
+========================================================================
+MD5 digest/hash values for files in the OASIS Library release directory
+========================================================================
+
+2a5ad6a479ef781610f19a977c37f41d  kmip-profiles-v1.1-errata01-csprd01.doc
+659c5df4718809ed36c671e432108793  kmip-profiles-v1.1-errata01-csprd01_files/image001.jpg
+a0fcee22bc5efb4caafb62b96274d11f  kmip-profiles-v1.1-errata01-csprd01.html
+39b1a44e14fd3b7e4c70b3e41bb75f9f  kmip-profiles-v1.1-errata01-csprd01.pdf
+7a6ae9933816fd1fe2982289153d4fa2  kmip-profiles-v1.1-errata01-csprd01.zip
+
+==========================================================================
+SHA-1 digest/hash values for files in the OASIS Library release directory
+==========================================================================
+
+82f2f1b88242024665c9c8773f2ebf5bbac14e57  kmip-profiles-v1.1-errata01-csprd01.doc
+d74b3003204fe7b9e904b043c2fbc73936c76fd8  kmip-profiles-v1.1-errata01-csprd01_files/image001.jpg
+da0be7b8d9f72b48e81b57edb28a3d40a005d917  kmip-profiles-v1.1-errata01-csprd01.html
+1f8257409c91d5effd0b209e8814a40cdd25817c  kmip-profiles-v1.1-errata01-csprd01.pdf
+24de7e9586e8117da8902a1d635d2cbe588bfd8f  kmip-profiles-v1.1-errata01-csprd01.zip

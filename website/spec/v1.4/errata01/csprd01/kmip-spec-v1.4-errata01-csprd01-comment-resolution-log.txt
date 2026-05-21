@@ -1,0 +1,17 @@
+In  https://lists.oasis-open.org/archives/kmip/201907/msg00008.html, Tony Cox, TC Co-Chair reports: 
+
+Subject: KMIP Specification v1.4 Errata Status
+
+From: Tony Cox <tony.cox@cryptsoft.com>
+To: kmip@lists.oasis-open.org
+Date: Thu, 18 Jul 2019 13:10:53 +0200
+
+Hi folks,
+
+Please be aware that the Public Review for the KMIP Specification v1.4 Errata 1 has closed and there were no comments received related to the public review drafts.
+
+This means that we are now eligible to progress the documents Approved Errata status.
+
+Best Regards,
+Tony Cox & Judy Furlong
+KMIP TC Co-Chairs
