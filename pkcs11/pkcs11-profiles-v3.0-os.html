@@ -1,0 +1,2485 @@
+<html>
+
+<head>
+<base href="https://docs.oasis-open.org/pkcs11/pkcs11-profiles/v3.0/os/pkcs11-profiles-v3.0-os.html">
+<meta name="description" content="This document is intended for developers and architects who wish to design systems and applications that conform to the PKCS #11 Cryptographic Token Interface standard.">
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 15 (filtered)">
+<title>PKCS #11 Cryptographic Token Interface Profiles Version 3.0</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+    {font-family:Wingdings;
+    panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+    {font-family:"MS Mincho";
+    panose-1:2 2 6 9 4 2 5 8 3 4;}
+@font-face
+    {font-family:"Cambria Math";
+    panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+    {font-family:Calibri;
+    panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+    {font-family:"Arial Unicode MS";
+    panose-1:2 11 6 4 2 2 2 2 2 4;}
+@font-face
+    {font-family:"Liberation Sans";
+    panose-1:2 11 6 4 2 2 2 2 2 4;}
+@font-face
+    {font-family:"DejaVu Sans";
+    panose-1:2 11 6 3 3 8 4 2 2 4;}
+@font-face
+    {font-family:"\@Arial Unicode MS";
+    panose-1:2 11 6 4 2 2 2 2 2 4;}
+@font-face
+    {font-family:"\@MS Mincho";
+    panose-1:2 2 6 9 4 2 5 8 3 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+    {margin-top:4.0pt;
+    margin-right:0in;
+    margin-bottom:4.0pt;
+    margin-left:0in;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+h1
+    {mso-style-name:"Heading 1\,h1\,Level 1 Topic Heading";
+    margin-top:24.0pt;
+    margin-right:0in;
+    margin-bottom:6.0pt;
+    margin-left:.3in;
+    text-indent:-.3in;
+    page-break-before:always;
+    page-break-after:avoid;
+    border:none;
+    padding:0in;
+    font-size:18.0pt;
+    font-family:"Liberation Sans",sans-serif;
+    color:#446CAA;
+    font-weight:bold;}
+h2
+    {mso-style-name:"Heading 2\,H2\,h2\,Level 2 Topic Heading";
+    margin-top:12.0pt;
+    margin-right:0in;
+    margin-bottom:6.0pt;
+    margin-left:.4in;
+    text-indent:-.4in;
+    page-break-after:avoid;
+    font-size:14.0pt;
+    font-family:"Liberation Sans",sans-serif;
+    color:#446CAA;
+    font-weight:bold;}
+h3
+    {mso-style-name:"Heading 3\,H3\,h3\,Level 3 Topic Heading";
+    mso-style-link:"Heading 3 Char\,H3 Char\,h3 Char\,Level 3 Topic Heading Char";
+    margin-top:12.0pt;
+    margin-right:0in;
+    margin-bottom:6.0pt;
+    margin-left:.5in;
+    text-indent:-.5in;
+    page-break-after:avoid;
+    font-size:13.0pt;
+    font-family:"Liberation Sans",sans-serif;
+    color:#446CAA;
+    font-weight:bold;}
+h4
+    {mso-style-name:"Heading 4\,H4\,h4\,First Subheading";
+    margin-top:12.0pt;
+    margin-right:0in;
+    margin-bottom:6.0pt;
+    margin-left:.6in;
+    text-indent:-.6in;
+    page-break-after:avoid;
+    font-size:12.0pt;
+    font-family:"Liberation Sans",sans-serif;
+    color:#446CAA;
+    font-weight:bold;}
+h5
+    {mso-style-name:"Heading 5\,h5\,Second Subheading";
+    margin-top:12.0pt;
+    margin-right:0in;
+    margin-bottom:6.0pt;
+    margin-left:.7in;
+    text-indent:-.7in;
+    page-break-after:avoid;
+    font-size:11.0pt;
+    font-family:"Liberation Sans",sans-serif;
+    color:#446CAA;
+    font-weight:bold;}
+h6
+    {mso-style-name:"Heading 6\,h6\,Third Subheading";
+    margin-top:12.0pt;
+    margin-right:0in;
+    margin-bottom:6.0pt;
+    margin-left:.8in;
+    text-indent:-.8in;
+    page-break-after:avoid;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;
+    color:#446CAA;
+    font-weight:bold;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+    {mso-style-name:"Heading 7\,DON\0027T USE 7";
+    margin-top:12.0pt;
+    margin-right:0in;
+    margin-bottom:6.0pt;
+    margin-left:.9in;
+    text-indent:-.9in;
+    page-break-after:avoid;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;
+    color:#446CAA;
+    font-weight:bold;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+    {mso-style-name:"Heading 8\, DON\0027T USE 8\,DON\0027T USE 8";
+    margin-top:12.0pt;
+    margin-right:0in;
+    margin-bottom:6.0pt;
+    margin-left:1.0in;
+    text-indent:-1.0in;
+    page-break-after:avoid;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;
+    color:#446CAA;
+    font-weight:bold;
+    font-style:italic;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+    {mso-style-name:"Heading 9\, DON\0027T USE 9\,DON\0027T USE 9";
+    margin-top:12.0pt;
+    margin-right:0in;
+    margin-bottom:6.0pt;
+    margin-left:1.1in;
+    text-indent:-1.1in;
+    page-break-after:avoid;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;
+    color:#446CAA;
+    font-weight:bold;
+    font-style:italic;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+    {margin-top:3.0pt;
+    margin-right:0in;
+    margin-bottom:3.0pt;
+    margin-left:0in;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+    {margin-top:3.0pt;
+    margin-right:0in;
+    margin-bottom:3.0pt;
+    margin-left:12.0pt;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+    {margin-top:3.0pt;
+    margin-right:0in;
+    margin-bottom:3.0pt;
+    margin-left:24.0pt;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.MsoToc4, li.MsoToc4, div.MsoToc4
+    {margin-top:3.0pt;
+    margin-right:0in;
+    margin-bottom:3.0pt;
+    margin-left:.5in;
+    font-size:9.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.MsoToc5, li.MsoToc5, div.MsoToc5
+    {margin-top:3.0pt;
+    margin-right:0in;
+    margin-bottom:3.0pt;
+    margin-left:48.0pt;
+    font-size:9.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.MsoToc6, li.MsoToc6, div.MsoToc6
+    {margin-top:4.0pt;
+    margin-right:0in;
+    margin-bottom:4.0pt;
+    margin-left:60.0pt;
+    font-size:9.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.MsoToc7, li.MsoToc7, div.MsoToc7
+    {margin-top:0in;
+    margin-right:0in;
+    margin-bottom:6.0pt;
+    margin-left:1.0in;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+    {mso-style-link:"Footnote Text Char";
+    margin-top:4.0pt;
+    margin-right:0in;
+    margin-bottom:4.0pt;
+    margin-left:0in;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+    {mso-style-link:"Comment Text Char";
+    margin-top:4.0pt;
+    margin-right:0in;
+    margin-bottom:4.0pt;
+    margin-left:0in;
+    font-size:10.0pt;
+    font-family:"Arial",sans-serif;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+    {margin-top:4.0pt;
+    margin-right:0in;
+    margin-bottom:4.0pt;
+    margin-left:0in;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+    {margin-top:6.0pt;
+    margin-right:0in;
+    margin-bottom:0in;
+    margin-left:0in;
+    margin-bottom:.0001pt;
+    font-size:8.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.MsoFooterCxSpFirst, li.MsoFooterCxSpFirst, div.MsoFooterCxSpFirst
+    {margin-top:6.0pt;
+    margin-right:0in;
+    margin-bottom:0in;
+    margin-left:0in;
+    margin-bottom:.0001pt;
+    font-size:8.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.MsoFooterCxSpMiddle, li.MsoFooterCxSpMiddle, div.MsoFooterCxSpMiddle
+    {margin:0in;
+    margin-bottom:.0001pt;
+    font-size:8.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.MsoFooterCxSpLast, li.MsoFooterCxSpLast, div.MsoFooterCxSpLast
+    {margin:0in;
+    margin-bottom:.0001pt;
+    font-size:8.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+    {margin-top:6.0pt;
+    margin-right:0in;
+    margin-bottom:6.0pt;
+    margin-left:0in;
+    font-size:9.0pt;
+    font-family:"Liberation Sans",sans-serif;
+    font-style:italic;}
+span.MsoFootnoteReference
+    {vertical-align:super;}
+span.MsoEndnoteReference
+    {vertical-align:super;}
+p.MsoEndnoteText, li.MsoEndnoteText, div.MsoEndnoteText
+    {mso-style-link:"Endnote Text Char";
+    margin-top:4.0pt;
+    margin-right:0in;
+    margin-bottom:4.0pt;
+    margin-left:0in;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.MsoMacroText, li.MsoMacroText, div.MsoMacroText
+    {mso-style-link:"Macro Text Char";
+    margin-top:4.0pt;
+    margin-right:0in;
+    margin-bottom:0in;
+    margin-left:0in;
+    margin-bottom:.0001pt;
+    font-size:10.0pt;
+    font-family:"Courier New";}
+p.MsoListBullet, li.MsoListBullet, div.MsoListBullet
+    {margin-top:4.0pt;
+    margin-right:0in;
+    margin-bottom:4.0pt;
+    margin-left:.25in;
+    text-indent:-.25in;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.MsoListBullet2, li.MsoListBullet2, div.MsoListBullet2
+    {margin-top:4.0pt;
+    margin-right:0in;
+    margin-bottom:4.0pt;
+    margin-left:.5in;
+    text-indent:-.25in;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+    {margin-top:0in;
+    margin-right:0in;
+    margin-bottom:10.0pt;
+    margin-left:0in;
+    border:none;
+    padding:0in;
+    font-size:24.0pt;
+    font-family:"Liberation Sans",sans-serif;
+    color:#446CAA;
+    font-weight:bold;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+    {mso-style-link:"Body Text Char";
+    margin-top:4.0pt;
+    margin-right:0in;
+    margin-bottom:6.0pt;
+    margin-left:0in;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+    {margin-top:0in;
+    margin-right:0in;
+    margin-bottom:10.0pt;
+    margin-left:0in;
+    border:none;
+    padding:0in;
+    font-size:18.0pt;
+    font-family:"Liberation Sans",sans-serif;
+    color:#446CAA;
+    font-weight:bold;}
+p.MsoNoteHeading, li.MsoNoteHeading, div.MsoNoteHeading
+    {margin-top:4.0pt;
+    margin-right:0in;
+    margin-bottom:4.0pt;
+    margin-left:0in;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+a:link, span.MsoHyperlink
+    {color:#0000EE;
+    text-decoration:none;}
+a:visited, span.MsoHyperlinkFollowed
+    {color:purple;
+    text-decoration:underline;}
+p.MsoPlainText, li.MsoPlainText, div.MsoPlainText
+    {mso-style-link:"Plain Text Char";
+    margin:0in;
+    margin-bottom:.0001pt;
+    font-size:10.5pt;
+    font-family:"Courier New";}
+p
+    {margin-right:0in;
+    margin-left:0in;
+    font-size:10.0pt;
+    font-family:"Arial Unicode MS",sans-serif;}
+pre
+    {margin:0in;
+    margin-bottom:.0001pt;
+    font-size:10.0pt;
+    font-family:"Arial Unicode MS",sans-serif;}
+samp
+    {font-family:"Courier New";}
+tt
+    {font-family:"Arial Unicode MS",sans-serif;}
+p.Titlepageinfo, li.Titlepageinfo, div.Titlepageinfo
+    {mso-style-name:"Title page info";
+    margin-top:6.0pt;
+    margin-right:0in;
+    margin-bottom:0in;
+    margin-left:0in;
+    margin-bottom:.0001pt;
+    page-break-after:avoid;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;
+    color:#446CAA;
+    font-weight:bold;}
+p.Titlepageinfodescription, li.Titlepageinfodescription, div.Titlepageinfodescription
+    {mso-style-name:"Title page info description";
+    margin:0in;
+    margin-bottom:.0001pt;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.TitlepageinfodescriptionCxSpFirst, li.TitlepageinfodescriptionCxSpFirst, div.TitlepageinfodescriptionCxSpFirst
+    {mso-style-name:"Title page info descriptionCxSpFirst";
+    margin:0in;
+    margin-bottom:.0001pt;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.TitlepageinfodescriptionCxSpMiddle, li.TitlepageinfodescriptionCxSpMiddle, div.TitlepageinfodescriptionCxSpMiddle
+    {mso-style-name:"Title page info descriptionCxSpMiddle";
+    margin:0in;
+    margin-bottom:.0001pt;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.TitlepageinfodescriptionCxSpLast, li.TitlepageinfodescriptionCxSpLast, div.TitlepageinfodescriptionCxSpLast
+    {mso-style-name:"Title page info descriptionCxSpLast";
+    margin:0in;
+    margin-bottom:.0001pt;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.Contributor, li.Contributor, div.Contributor
+    {mso-style-name:Contributor;
+    margin:0in;
+    margin-bottom:.0001pt;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.ContributorCxSpFirst, li.ContributorCxSpFirst, div.ContributorCxSpFirst
+    {mso-style-name:ContributorCxSpFirst;
+    margin:0in;
+    margin-bottom:.0001pt;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.ContributorCxSpMiddle, li.ContributorCxSpMiddle, div.ContributorCxSpMiddle
+    {mso-style-name:ContributorCxSpMiddle;
+    margin:0in;
+    margin-bottom:.0001pt;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.ContributorCxSpLast, li.ContributorCxSpLast, div.ContributorCxSpLast
+    {mso-style-name:ContributorCxSpLast;
+    margin:0in;
+    margin-bottom:.0001pt;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.Legalnotice, li.Legalnotice, div.Legalnotice
+    {mso-style-name:"Legal notice";
+    margin-top:12.0pt;
+    margin-right:0in;
+    margin-bottom:0in;
+    margin-left:0in;
+    margin-bottom:.0001pt;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.LegalnoticeCxSpFirst, li.LegalnoticeCxSpFirst, div.LegalnoticeCxSpFirst
+    {mso-style-name:"Legal noticeCxSpFirst";
+    margin-top:12.0pt;
+    margin-right:0in;
+    margin-bottom:0in;
+    margin-left:0in;
+    margin-bottom:.0001pt;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.LegalnoticeCxSpMiddle, li.LegalnoticeCxSpMiddle, div.LegalnoticeCxSpMiddle
+    {mso-style-name:"Legal noticeCxSpMiddle";
+    margin:0in;
+    margin-bottom:.0001pt;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.LegalnoticeCxSpLast, li.LegalnoticeCxSpLast, div.LegalnoticeCxSpLast
+    {mso-style-name:"Legal noticeCxSpLast";
+    margin:0in;
+    margin-bottom:.0001pt;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+span.Datatype
+    {mso-style-name:Datatype;
+    font-family:"Courier New";}
+p.Code, li.Code, div.Code
+    {mso-style-name:Code;
+    margin-top:0in;
+    margin-right:.3in;
+    margin-bottom:0in;
+    margin-left:.3in;
+    margin-bottom:.0001pt;
+    background:#D9D9D9;
+    border:none;
+    padding:0in;
+    font-size:9.0pt;
+    font-family:"Courier New";}
+p.AppendixHeading2, li.AppendixHeading2, div.AppendixHeading2
+    {mso-style-name:AppendixHeading2;
+    margin-top:12.0pt;
+    margin-right:0in;
+    margin-bottom:6.0pt;
+    margin-left:.25in;
+    text-indent:-.25in;
+    page-break-after:avoid;
+    font-size:14.0pt;
+    font-family:"Liberation Sans",sans-serif;
+    color:#446CAA;
+    font-weight:bold;}
+span.Element
+    {mso-style-name:Element;
+    font-family:"Courier New";}
+span.Attribute
+    {mso-style-name:Attribute;
+    font-family:"Courier New";}
+span.Keyword
+    {mso-style-name:Keyword;
+    font-family:"Courier New";}
+p.Note, li.Note, div.Note
+    {mso-style-name:Note;
+    margin-top:6.0pt;
+    margin-right:.5in;
+    margin-bottom:6.0pt;
+    margin-left:.5in;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.Definitionterm, li.Definitionterm, div.Definitionterm
+    {mso-style-name:"Definition term";
+    margin-top:4.0pt;
+    margin-right:2.0in;
+    margin-bottom:4.0pt;
+    margin-left:0in;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;
+    font-weight:bold;}
+p.Definition, li.Definition, div.Definition
+    {mso-style-name:Definition;
+    margin-top:4.0pt;
+    margin-right:0in;
+    margin-bottom:6.0pt;
+    margin-left:.5in;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.Ref, li.Ref, div.Ref
+    {mso-style-name:Ref;
+    margin-top:2.0pt;
+    margin-right:0in;
+    margin-bottom:2.0pt;
+    margin-left:1.5in;
+    text-indent:-1.25in;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;
+    color:black;}
+p.AppendixHeading1, li.AppendixHeading1, div.AppendixHeading1
+    {mso-style-name:AppendixHeading1;
+    mso-style-link:"AppendixHeading1 Char";
+    margin-right:0in;
+    margin-left:.25in;
+    text-indent:-.25in;
+    page-break-before:always;
+    page-break-after:avoid;
+    border:none;
+    padding:0in;
+    font-size:18.0pt;
+    font-family:"Liberation Sans",sans-serif;
+    color:#446CAA;
+    font-weight:bold;}
+span.Refterm
+    {mso-style-name:"Ref term";
+    font-weight:bold;}
+p.Example, li.Example, div.Example
+    {mso-style-name:Example;
+    margin-top:0in;
+    margin-right:.3in;
+    margin-bottom:0in;
+    margin-left:.3in;
+    margin-bottom:.0001pt;
+    background:#E6E6E6;
+    font-size:9.0pt;
+    font-family:"Courier New";}
+span.CODEtemp
+    {mso-style-name:"CODE temp";
+    font-family:"Courier New";}
+p.Codesmall, li.Codesmall, div.Codesmall
+    {mso-style-name:"Code small";
+    margin-top:0in;
+    margin-right:.3in;
+    margin-bottom:0in;
+    margin-left:.3in;
+    margin-bottom:.0001pt;
+    background:#E6E6E6;
+    border:none;
+    padding:0in;
+    font-size:8.0pt;
+    font-family:"Courier New";}
+p.Examplesmall, li.Examplesmall, div.Examplesmall
+    {mso-style-name:"Example small";
+    margin-top:0in;
+    margin-right:.3in;
+    margin-bottom:0in;
+    margin-left:.3in;
+    margin-bottom:.0001pt;
+    background:#E6E6E6;
+    font-size:8.0pt;
+    font-family:"Courier New";}
+span.Variable
+    {mso-style-name:Variable;
+    font-style:italic;}
+span.FootnoteTextChar
+    {mso-style-name:"Footnote Text Char";
+    mso-style-link:"Footnote Text";
+    font-family:"Arial",sans-serif;}
+p.RelatedWork, li.RelatedWork, div.RelatedWork
+    {mso-style-name:"Related Work";
+    margin-top:0in;
+    margin-right:0in;
+    margin-bottom:4.0pt;
+    margin-left:.25in;
+    text-indent:-.25in;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.RelatedWorkCxSpFirst, li.RelatedWorkCxSpFirst, div.RelatedWorkCxSpFirst
+    {mso-style-name:"Related WorkCxSpFirst";
+    margin-top:0in;
+    margin-right:0in;
+    margin-bottom:0in;
+    margin-left:.25in;
+    margin-bottom:.0001pt;
+    text-indent:-.25in;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.RelatedWorkCxSpMiddle, li.RelatedWorkCxSpMiddle, div.RelatedWorkCxSpMiddle
+    {mso-style-name:"Related WorkCxSpMiddle";
+    margin-top:0in;
+    margin-right:0in;
+    margin-bottom:0in;
+    margin-left:.25in;
+    margin-bottom:.0001pt;
+    text-indent:-.25in;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.RelatedWorkCxSpLast, li.RelatedWorkCxSpLast, div.RelatedWorkCxSpLast
+    {mso-style-name:"Related WorkCxSpLast";
+    margin-top:0in;
+    margin-right:0in;
+    margin-bottom:4.0pt;
+    margin-left:.25in;
+    text-indent:-.25in;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.Abstract, li.Abstract, div.Abstract
+    {mso-style-name:Abstract;
+    margin-top:0in;
+    margin-right:0in;
+    margin-bottom:4.0pt;
+    margin-left:0in;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.Notices, li.Notices, div.Notices
+    {mso-style-name:Notices;
+    margin-top:0in;
+    margin-right:0in;
+    margin-bottom:10.0pt;
+    margin-left:0in;
+    page-break-before:always;
+    border:none;
+    padding:0in;
+    font-size:18.0pt;
+    font-family:"Liberation Sans",sans-serif;
+    color:#446CAA;
+    font-weight:bold;}
+p.TextBody, li.TextBody, div.TextBody
+    {mso-style-name:"Text Body";
+    margin-top:0in;
+    margin-right:0in;
+    margin-bottom:4.0pt;
+    margin-left:0in;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;}
+p.AppendixHeading3, li.AppendixHeading3, div.AppendixHeading3
+    {mso-style-name:AppendixHeading3;
+    margin-top:12.0pt;
+    margin-right:0in;
+    margin-bottom:6.0pt;
+    margin-left:.25in;
+    text-indent:-.25in;
+    page-break-after:avoid;
+    font-size:13.0pt;
+    font-family:"Liberation Sans",sans-serif;
+    color:#446CAA;
+    font-weight:bold;}
+span.EndnoteTextChar
+    {mso-style-name:"Endnote Text Char";
+    mso-style-link:"Endnote Text";
+    font-family:"Arial",sans-serif;}
+p.AppendixHeading4, li.AppendixHeading4, div.AppendixHeading4
+    {mso-style-name:AppendixHeading4;
+    margin-top:12.0pt;
+    margin-right:0in;
+    margin-bottom:6.0pt;
+    margin-left:.25in;
+    text-indent:-.25in;
+    page-break-after:avoid;
+    font-size:12.0pt;
+    font-family:"Liberation Sans",sans-serif;
+    color:#446CAA;
+    font-weight:bold;}
+p.AppendixHeading5, li.AppendixHeading5, div.AppendixHeading5
+    {mso-style-name:AppendixHeading5;
+    margin-top:10.0pt;
+    margin-right:0in;
+    margin-bottom:6.0pt;
+    margin-left:.25in;
+    text-indent:-.25in;
+    page-break-after:avoid;
+    font-size:10.0pt;
+    font-family:"Liberation Sans",sans-serif;
+    color:#446CAA;
+    font-weight:bold;}
+span.MacroTextChar
+    {mso-style-name:"Macro Text Char";
+    mso-style-link:"Macro Text";
+    font-family:"Courier New";}
+span.PlainTextChar
+    {mso-style-name:"Plain Text Char";
+    mso-style-link:"Plain Text";
+    font-family:"Courier New";}
+span.BodyTextChar
+    {mso-style-name:"Body Text Char";
+    mso-style-link:"Body Text";
+    font-family:"Liberation Sans",sans-serif;}
+span.AppendixHeading1Char
+    {mso-style-name:"AppendixHeading1 Char";
+    mso-style-link:AppendixHeading1;
+    font-family:"Liberation Sans",sans-serif;
+    color:#446CAA;
+    font-weight:bold;}
+span.Heading3Char
+    {mso-style-name:"Heading 3 Char\,H3 Char\,h3 Char\,Level 3 Topic Heading Char";
+    mso-style-link:"Heading 3\,H3\,h3\,Level 3 Topic Heading";
+    font-family:"Liberation Sans",sans-serif;
+    color:#446CAA;
+    font-weight:bold;}
+span.CommentTextChar
+    {mso-style-name:"Comment Text Char";
+    mso-style-link:"Comment Text";
+    font-family:"Arial",sans-serif;}
+p.Table, li.Table, div.Table
+    {mso-style-name:Table;
+    margin-top:0in;
+    margin-right:0in;
+    margin-bottom:2.0pt;
+    margin-left:0in;
+    font-size:12.0pt;
+    font-family:"Times New Roman",serif;}
+.MsoChpDefault
+    {font-size:10.0pt;}
+ /* Page Definitions */
+ @page WordSection1
+    {size:8.5in 11.0in;
+    margin:1.0in 1.0in .5in 1.0in;}
+div.WordSection1
+    {page:WordSection1;}
+@page WordSection2
+    {size:8.5in 11.0in;
+    margin:1.0in 1.0in .5in 1.0in;}
+div.WordSection2
+    {page:WordSection2;}
+ /* List Definitions */
+ ol
+    {margin-bottom:0in;}
+ul
+    {margin-bottom:0in;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US link="#0000EE" vlink=purple>
+
+<div class=WordSection1>
+
+<p class=MsoHeader><img width=240 height=53 id="Picture 1"
+src="pkcs11-profiles-v3.0-os_files/image001.jpg"></p>
+
+<div style='border:none;border-top:solid gray 1.0pt;padding:1.0pt 0in 0in 0in'>
+
+<p class=MsoTitle>PKCS #11 Cryptographic Token Interface Profiles Version 3.0</p>
+
+<p class=MsoSubtitle>OASIS Standard</p>
+
+<p class=MsoSubtitle>15 June 2020</p>
+
+</div>
+
+<p class=Titlepageinfo>This stage:</p>
+
+<p class=MsoNormal style='margin:0in;margin-bottom:.0001pt'><a
+href="https://docs.oasis-open.org/pkcs11/pkcs11-profiles/v3.0/os/pkcs11-profiles-v3.0-os.docx">https://docs.oasis-open.org/pkcs11/pkcs11-profiles/v3.0/os/pkcs11-profiles-v3.0-os.docx</a>
+(Authoritative)</p>
+
+<p class=MsoNormal style='margin:0in;margin-bottom:.0001pt'><a
+href="https://docs.oasis-open.org/pkcs11/pkcs11-profiles/v3.0/os/pkcs11-profiles-v3.0-os.html">https://docs.oasis-open.org/pkcs11/pkcs11-profiles/v3.0/os/pkcs11-profiles-v3.0-os.html</a></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:2.0pt;
+margin-left:0in'><a
+href="https://docs.oasis-open.org/pkcs11/pkcs11-profiles/v3.0/os/pkcs11-profiles-v3.0-os.pdf">https://docs.oasis-open.org/pkcs11/pkcs11-profiles/v3.0/os/pkcs11-profiles-v3.0-os.pdf</a></p>
+
+<p class=Titlepageinfo>Previous stage:</p>
+
+<p class=MsoNormal style='margin:0in;margin-bottom:.0001pt'>N/A</p>
+
+<p class=Titlepageinfo>Latest stage:</p>
+
+<p class=MsoNormal style='margin:0in;margin-bottom:.0001pt'><a
+href="https://docs.oasis-open.org/pkcs11/pkcs11-profiles/v3.0/pkcs11-profiles-v3.0.docx">https://docs.oasis-open.org/pkcs11/pkcs11-profiles/v3.0/pkcs11-profiles-v3.0.docx</a>
+(Authoritative)</p>
+
+<p class=MsoNormal style='margin:0in;margin-bottom:.0001pt'><a
+href="https://docs.oasis-open.org/pkcs11/pkcs11-profiles/v3.0/pkcs11-profiles-v3.0.html">https://docs.oasis-open.org/pkcs11/pkcs11-profiles/v3.0/pkcs11-profiles-v3.0.html</a></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:2.0pt;
+margin-left:0in'><a
+href="https://docs.oasis-open.org/pkcs11/pkcs11-profiles/v3.0/pkcs11-profiles-v3.0.pdf">https://docs.oasis-open.org/pkcs11/pkcs11-profiles/v3.0/pkcs11-profiles-v3.0.pdf</a></p>
+
+<p class=Titlepageinfo>Technical Committee:</p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:2.0pt;
+margin-left:0in'><a href="https://www.oasis-open.org/committees/pkcs11/">OASIS
+PKCS 11 TC</a></p>
+
+<p class=Titlepageinfo>Chairs:</p>
+
+<p class=MsoNormal style='margin:0in;margin-bottom:.0001pt'>Tony Cox (<a href="/cdn-cgi/l/email-protection#0c78636275226f63744c6f7e757c787f636a78226f6361"><span class="__cf_email__" data-cfemail="d7a3b8b9aef9b4b8af97b4a5aea7a3a4b8b1a3f9b4b8ba">[email&#160;protected]</span></a>), <a
+href="https://cryptsoft.com/">Cryptsoft Pty Ltd</a></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:2.0pt;
+margin-left:0in'>Robert Relyea (<a href="/cdn-cgi/l/email-protection#99ebebfcf5e0fcf8d9ebfcfdf1f8edb7faf6f4"><span class="__cf_email__" data-cfemail="96e4e4f3faeff3f7d6e4f3f2fef7e2b8f5f9fb">[email&#160;protected]</span></a>),
+<a href="http://www.redhat.com">Red Hat</a></p>
+
+<p class=Titlepageinfo>Editor:</p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:2.0pt;
+margin-left:0in'>Tim Hudson (<a href="/cdn-cgi/l/email-protection#1e6a74765e7d6c676e6a6d71786a307d7173"><span class="__cf_email__" data-cfemail="11657b79517263686165627e77653f727e7c">[email&#160;protected]</span></a>),
+<a href="https://cryptsoft.com/">Cryptsoft Pty Ltd</a></p>
+
+<p class=Titlepageinfo><a name=AdditionalArtifacts>Additional artifacts</a>:</p>
+
+<p class=Titlepageinfodescription>This prose specification is one component of
+a Work Product that also includes:</p>
+
+<p class=RelatedWorkCxSpFirst><span class=MsoHyperlink><span style='font-family:
+Symbol;color:windowtext'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span>PKCS #11 header files: <br>
+<a
+href="https://docs.oasis-open.org/pkcs11/pkcs11-profiles/v3.0/os/include/pkcs11-v3.0/">https://docs.oasis-open.org/pkcs11/pkcs11-profiles/v3.0/os/include/pkcs11-v3.0/</a></p>
+
+<p class=RelatedWorkCxSpLast><a name="_Hlk45901396"><span style='font-family:
+Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span class=MsoHyperlink><span style='color:red'>ALERT:</span></span><span
+class=MsoHyperlink><span style='color:windowtext'> Due to a clerical error when
+publishing the Committee Specification, the header files listed above are
+outdated and may contain serious flaws. The TC is addressing this in the next
+round of edits. Meanwhile, users of the standard can find the correct header
+files at </span></span></a><a
+href="https://github.com/oasis-tcs/pkcs11/tree/master/working/3-00-current">https://github.com/oasis-tcs/pkcs11/tree/master/working/3-00-current</a><span
+class=MsoHyperlink>.</span></p>
+
+<p class=Titlepageinfo><a name=RelatedWork>Related work</a>:</p>
+
+<p class=Titlepageinfodescription>This specification replaces or supersedes:</p>
+
+<p class=RelatedWork><span style='font-family:Symbol'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span class=MsoHyperlink><i><span style='color:windowtext'>PKCS
+#11 Cryptographic Token Interface Profiles Version 2.40</span></i></span><span
+class=MsoHyperlink><span style='color:windowtext'>. Edited by Tim Hudson.
+Latest stage. </span></span><a href="https://docs.oasis-open.org/pkcs11/pkcs11-profiles/v2.40/pkcs11-profiles-v2.40.html">http://docs.oasis-open.org/pkcs11/pkcs11-profiles/v2.40/pkcs11-profiles-v2.40.html</a><span
+style='color:#0000EE'>.</span></p>
+
+<p class=Titlepageinfodescription>This specification is related to:</p>
+
+<p class=RelatedWorkCxSpFirst><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><i>PKCS #11 Cryptographic Token Interface Base Specification
+Version 3.0.</i> Edited by Chris Zimman and Dieter Bong. Latest stage. <a
+href="https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.0/pkcs11-base-v3.0.html">https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.0/pkcs11-base-v3.0.html</a><span
+class=MsoHyperlink>.</span></p>
+
+<p class=RelatedWorkCxSpMiddle><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><i>PKCS #11 Cryptographic Token Interface Current Mechanisms
+Specification Version 3.0. </i>Edited by Chris Zimman and Dieter Bong. Latest stage.
+<a
+href="https://docs.oasis-open.org/pkcs11/pkcs11-curr/v3.0/pkcs11-curr-v3.0.html">https://docs.oasis-open.org/pkcs11/pkcs11-curr/v3.0/pkcs11-curr-v3.0.html</a><span
+class=MsoHyperlink>.</span></p>
+
+<p class=RelatedWorkCxSpLast><span style='font-family:Symbol'>·<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><i>PKCS #11 Cryptographic Token Interface Historical Mechanisms
+Specification Version 3.0</i>. Edited by Chris Zimman and Dieter Bong. Latest stage.
+<a
+href="https://docs.oasis-open.org/pkcs11/pkcs11-hist/v3.0/pkcs11-hist-v3.0.html">https://docs.oasis-open.org/pkcs11/pkcs11-hist/v3.0/pkcs11-hist-v3.0.html</a><span
+class=MsoHyperlink>.</span></p>
+
+<p class=Titlepageinfo>Abstract:</p>
+
+<p class=Abstract>This document is intended for developers and architects who
+wish to design systems and applications that conform to the PKCS #11
+Cryptographic Token Interface standard.</p>
+
+<p class=Abstract>The PKCS #11 Cryptographic Token Interface standard documents
+an API for devices that may hold cryptographic information and may perform
+cryptographic functions.</p>
+
+<p class=Titlepageinfo>Status:</p>
+
+<p class=Abstract>This document was last revised or approved by the membership
+of OASIS on the above date. The level of approval is also listed above. Check
+the &quot;Latest stage&quot; location noted above for possible later revisions
+of this document. Any other numbered Versions and other technical work produced
+by the Technical Committee (TC) are listed at <a
+href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=pkcs11#technical">https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=pkcs11#technical</a>.</p>
+
+<p class=Abstract>TC members should send comments on this document to the TC's
+email list. Others should send comments to the TC's public comment list, after
+subscribing to it by following the instructions at the &quot;<a
+href="https://www.oasis-open.org/committees/comments/index.php?wg_abbrev=pkcs11">Send
+A Comment</a>&quot; button on the TC's web page at <a
+href="https://www.oasis-open.org/committees/pkcs11/">https://www.oasis-open.org/committees/pkcs11/</a><span
+class=MsoHyperlink><span style='color:black'>.</span></span></p>
+
+<p class=Abstract>This specification is provided under the <a
+href="https://www.oasis-open.org/policies-guidelines/ipr#RF-on-RAND-Mode">RF on
+RAND Terms</a> Mode of the <a
+href="https://www.oasis-open.org/policies-guidelines/ipr">OASIS IPR Policy</a>,
+the mode chosen when the Technical Committee was established. For information
+on whether any patents have been disclosed that may be essential to
+implementing this specification, and any offers of patent licensing terms,
+please refer to the Intellectual Property Rights section of the TC's web page (<a
+href="https://www.oasis-open.org/committees/pkcs11/ipr.php">https://www.oasis-open.org/committees/pkcs11/ipr.php</a>).</p>
+
+<p class=Abstract>Note that any machine-readable content (<a
+href="https://www.oasis-open.org/policies-guidelines/tc-process#wpComponentsCompLang">Computer
+Language Definitions</a>) declared Normative for this Work Product is provided
+in separate plain text files. In the event of a discrepancy between any such
+plain text file and display content in the Work Product's prose narrative
+document(s), the content in the separate plain text file prevails.</p>
+
+<p class=Titlepageinfo>Citation format:</p>
+
+<p class=Abstract>When referencing this specification the following citation
+format should be used:</p>
+
+<p class=Abstract><span class=Refterm>[PKCS11-Profiles-v3.0]</span></p>
+
+<p class=Abstract><i>PKCS #11 Cryptographic Token Interface Profiles Version
+3.0</i>. Edited by Tim Hudson. 15 June 2020. OASIS Standard. <a
+href="https://docs.oasis-open.org/pkcs11/pkcs11-profiles/v3.0/os/pkcs11-profiles-v3.0-os.html">https://docs.oasis-open.org/pkcs11/pkcs11-profiles/v3.0/os/pkcs11-profiles-v3.0-os.html</a>.
+Latest stage: <a
+href="https://docs.oasis-open.org/pkcs11/pkcs11-profiles/v3.0/pkcs11-profiles-v3.0.html">https://docs.oasis-open.org/pkcs11/pkcs11-profiles/v3.0/pkcs11-profiles-v3.0.html</a>.</p>
+
+<div style='border:none;border-top:solid gray 1.0pt;padding:1.0pt 0in 0in 0in'>
+
+<p class=Notices>Notices</p>
+
+</div>
+
+<p class=MsoNormal>Copyright © OASIS Open 2020. All Rights Reserved.</p>
+
+<p class=MsoNormal>All capitalized terms in the following text have the
+meanings assigned to them in the OASIS Intellectual Property Rights Policy (the
+&quot;OASIS IPR Policy&quot;). The full <a
+href="https://www.oasis-open.org/policies-guidelines/ipr">Policy</a> may be
+found at the OASIS website.</p>
+
+<p class=MsoNormal>This document and translations of it may be copied and
+furnished to others, and derivative works that comment on or otherwise explain
+it or assist in its implementation may be prepared, copied, published, and
+distributed, in whole or in part, without restriction of any kind, provided
+that the above copyright notice and this section are included on all such
+copies and derivative works. However, this document itself may not be modified
+in any way, including by removing the copyright notice or references to OASIS,
+except as needed for the purpose of developing any document or deliverable
+produced by an OASIS Technical Committee (in which case the rules applicable to
+copyrights, as set forth in the OASIS IPR Policy, must be followed) or as
+required to translate it into languages other than English.</p>
+
+<p class=MsoNormal>The limited permissions granted above are perpetual and will
+not be revoked by OASIS or its successors or assigns.</p>
+
+<p class=MsoNormal>This document and the information contained herein is
+provided on an &quot;AS IS&quot; basis and OASIS DISCLAIMS ALL WARRANTIES,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF
+THE INFORMATION HEREIN WILL NOT INFRINGE ANY OWNERSHIP RIGHTS OR ANY IMPLIED
+WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.</p>
+
+<p class=MsoNormal>OASIS requests that any OASIS Party or any other party that
+believes it has patent claims that would necessarily be infringed by
+implementations of this OASIS Committee Specification or OASIS Standard, to
+notify OASIS TC Administrator and provide an indication of its willingness to
+grant patent licenses to such patent claims in a manner consistent with the IPR
+Mode of the OASIS Technical Committee that produced this specification.</p>
+
+<p class=MsoNormal>OASIS invites any party to contact the OASIS TC
+Administrator if it is aware of a claim of ownership of any patent claims that
+would necessarily be infringed by implementations of this specification by a
+patent holder that is not willing to provide a license to such patent claims in
+a manner consistent with the IPR Mode of the OASIS Technical Committee that
+produced this specification. OASIS may include such claims on its website, but
+disclaims any obligation to do so.</p>
+
+<p class=MsoNormal>OASIS takes no position regarding the validity or scope of
+any intellectual property or other rights that might be claimed to pertain to
+the implementation or use of the technology described in this document or the
+extent to which any license under such rights might or might not be available;
+neither does it represent that it has made any effort to identify any such
+rights. Information on OASIS' procedures with respect to rights in any document
+or deliverable produced by an OASIS Technical Committee can be found on the
+OASIS website. Copies of claims of rights made available for publication and
+any assurances of licenses to be made available, or the result of an attempt
+made to obtain a general license or permission for the use of such proprietary
+rights by implementers or users of this OASIS Committee Specification or OASIS
+Standard, can be obtained from the OASIS TC Administrator. OASIS makes no representation
+that any information or list of intellectual property rights will at any time
+be complete, or that any claims in such list are, in fact, Essential Claims.</p>
+
+<p class=MsoNormal>The name &quot;OASIS&quot; is a trademark of <a
+href="https://www.oasis-open.org/">OASIS</a>, the owner and developer of this
+specification, and should be used only to refer to the organization and its
+official outputs. OASIS welcomes reference to, and implementation and use of,
+specifications, while reserving the right to enforce its marks against misleading
+uses. Please see <a
+href="https://www.oasis-open.org/policies-guidelines/trademark">https://www.oasis-open.org/policies-guidelines/trademark</a>
+for above guidance.</p>
+
+<div style='border:none;border-top:solid gray 1.0pt;padding:1.0pt 0in 0in 0in'>
+
+<p class=Notices>Table of Contents</p>
+
+</div>
+
+<p class=MsoToc1><a href="#_Toc10196637">1<span style='font-size:11.0pt;
+font-family:"Calibri",sans-serif;color:windowtext'>        </span>Introduction<span
+style='color:windowtext;display:none'>. </span><span
+style='color:windowtext;display:none'>5</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc10196638">1.1 IPR Policy<span style='color:windowtext;
+display:none'>. </span><span
+style='color:windowtext;display:none'>5</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc10196639">1.2 Terminology<span style='color:
+windowtext;display:none'>. </span><span
+style='color:windowtext;display:none'>5</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc10196640">1.3 Normative References<span
+style='color:windowtext;display:none'>. </span><span
+style='color:windowtext;display:none'>5</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc10196641">1.4 Non-Normative References<span
+style='color:windowtext;display:none'>. </span><span
+style='color:windowtext;display:none'>5</span></a></p>
+
+<p class=MsoToc1><a href="#_Toc10196642">2<span style='font-size:11.0pt;
+font-family:"Calibri",sans-serif;color:windowtext'>        </span>Profiles<span
+style='color:windowtext;display:none'>. </span><span
+style='color:windowtext;display:none'>6</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc10196643">2.1 PKCS #11 Profiles<span
+style='color:windowtext;display:none'>. </span><span
+style='color:windowtext;display:none'>6</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc10196644">2.2 Guidelines for Specifying
+Conformance Clauses<span style='color:windowtext;display:none'>. </span><span style='color:windowtext;display:none'>6</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc10196645">2.3 Guidelines for Validating
+Conformance to PKCS #11 Profiles<span style='color:windowtext;display:none'>. </span><span style='color:windowtext;display:none'>6</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc10196646">2.4 Defined Profile Identifiers<span
+style='color:windowtext;display:none'>. </span><span
+style='color:windowtext;display:none'>6</span></a></p>
+
+<p class=MsoToc1><a href="#_Toc10196647">3<span style='font-size:11.0pt;
+font-family:"Calibri",sans-serif;color:windowtext'>        </span>Conformance<span
+style='color:windowtext;display:none'>. </span><span
+style='color:windowtext;display:none'>8</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc10196648">3.1 Purpose of this Section<span
+style='color:windowtext;display:none'>. </span><span
+style='color:windowtext;display:none'>8</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc10196649">3.2 Baseline Consumer Clause<span
+style='color:windowtext;display:none'>. </span><span
+style='color:windowtext;display:none'>8</span></a></p>
+
+<p class=MsoToc3><a href="#_Toc10196650">3.2.1 Implementation Conformance<span
+style='color:windowtext;display:none'>. </span><span
+style='color:windowtext;display:none'>8</span></a></p>
+
+<p class=MsoToc3><a href="#_Toc10196651">3.2.2 Conformance of a PKCS #11
+Baseline Consumer<span style='color:windowtext;display:none'> </span><span style='color:windowtext;display:none'>8</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc10196652">3.3 Baseline Provider Clause<span
+style='color:windowtext;display:none'>. </span><span
+style='color:windowtext;display:none'>9</span></a></p>
+
+<p class=MsoToc3><a href="#_Toc10196653">3.3.1 Implementation Conformance<span
+style='color:windowtext;display:none'>. </span><span
+style='color:windowtext;display:none'>9</span></a></p>
+
+<p class=MsoToc3><a href="#_Toc10196654">3.3.2 Conformance of a PKCS #11
+Baseline Provider<span style='color:windowtext;display:none'> </span><span style='color:windowtext;display:none'>9</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc10196655">3.4 Extended Consumer Clause<span
+style='color:windowtext;display:none'>. </span><span
+style='color:windowtext;display:none'>10</span></a></p>
+
+<p class=MsoToc3><a href="#_Toc10196656">3.4.1 Implementation Conformance<span
+style='color:windowtext;display:none'>. </span><span
+style='color:windowtext;display:none'>10</span></a></p>
+
+<p class=MsoToc3><a href="#_Toc10196657">3.4.2 Conformance of a PKCS #11
+Extended Consumer<span style='color:windowtext;display:none'> </span><span style='color:windowtext;display:none'>10</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc10196658">3.5 Extended Provider Clause<span
+style='color:windowtext;display:none'>. </span><span
+style='color:windowtext;display:none'>11</span></a></p>
+
+<p class=MsoToc3><a href="#_Toc10196659">3.5.1 Implementation Conformance<span
+style='color:windowtext;display:none'>. </span><span
+style='color:windowtext;display:none'>11</span></a></p>
+
+<p class=MsoToc3><a href="#_Toc10196660">3.5.2 Conformance of a PKCS #11
+Extended Provider<span style='color:windowtext;display:none'> </span><span style='color:windowtext;display:none'>11</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc10196661">3.6 Authentication Token Clause<span
+style='color:windowtext;display:none'>. </span><span
+style='color:windowtext;display:none'>11</span></a></p>
+
+<p class=MsoToc3><a href="#_Toc10196662">3.6.1 Implementation Conformance<span
+style='color:windowtext;display:none'>. </span><span
+style='color:windowtext;display:none'>12</span></a></p>
+
+<p class=MsoToc3><a href="#_Toc10196663">3.6.2 Conformance of an Authentication
+Token<span style='color:windowtext;display:none'>. </span><span style='color:windowtext;display:none'>12</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc10196664">3.7 Public Certificates Token Clause<span
+style='color:windowtext;display:none'>. </span><span
+style='color:windowtext;display:none'>12</span></a></p>
+
+<p class=MsoToc3><a href="#_Toc10196665">3.7.1 Implementation Conformance<span
+style='color:windowtext;display:none'>. </span><span
+style='color:windowtext;display:none'>12</span></a></p>
+
+<p class=MsoToc3><a href="#_Toc10196666">3.7.2 Conformance of a Public Certificates
+Token<span style='color:windowtext;display:none'>. </span><span style='color:windowtext;display:none'>12</span></a></p>
+
+<p class=MsoToc1><a href="#_Toc10196667">Appendix A.<span style='font-size:
+11.0pt;font-family:"Calibri",sans-serif;color:windowtext'>        </span>Acknowledgments<span
+style='color:windowtext;display:none'>. </span><span
+style='color:windowtext;display:none'>14</span></a></p>
+
+<p class=MsoToc1><a href="#_Toc10196668">Appendix B.<span style='font-size:
+11.0pt;font-family:"Calibri",sans-serif;color:windowtext'>        </span>Revision
+History<span style='color:windowtext;display:none'>. </span><span style='color:windowtext;display:none'>16</span></a></p>
+
+<p class=TextBody>&nbsp;</p>
+
+<p class=TextBody>&nbsp;</p>
+
+</div>
+
+<span style='font-size:10.0pt;font-family:"Liberation Sans",sans-serif'><br
+clear=all style='page-break-before:always'>
+</span>
+
+<div class=WordSection2>
+
+<div style='border:none;border-top:solid gray 1.0pt;padding:6.0pt 0in 0in 0in'>
+
+<h1><a name="_Toc10196637"></a><a name="_Toc525136361">1<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Introduction</a></h1>
+
+</div>
+
+<p class=MsoBodyText><a name="_Toc287332007"></a><a name="_Toc85472893">This
+document intends to meet this OASIS requirement on conformance clauses for
+providers and consumers of cryptographic services via PKCS#11 ([PKCS11-Base]
+Section 6 - PKCS#11 Implementation Conformance) through profiles that define
+the use of PKCS#11 data types, objects, functions and mechanisms within
+specific contexts of provider and consumer interaction. These profiles define a
+set of normative constraints for employing PKCS#11 within a particular
+environment or context of use. They may, optionally, require the use of
+specific PKCS#11 functionality or in other respects define the processing rules
+to be followed by profile actors.</a></p>
+
+<p class=MsoBodyText>For normative definition of the elements of PKCS#11
+specified in these profiles, see the <u>PKCS#11 Cryptographic Token Interface
+Base Specification</u> ([PKCS11-Base]).and the <u>PKCS#11 Cryptographic Token
+Interface Current Mechanisms </u>([PKCS11-Curr]).<i> </i>Illustrative guidance
+for the implementation of providers and consumers of PKCS#11 is provided in the
+<u>PKCS#11 Cryptographic Token Interface Usage Guide</u><i>  </i>([PKCS11-UG]).</p>
+
+<h2><a name="_Toc10196638">1.1 IPR Policy</a></h2>
+
+<p class=MsoNormal>This specification is provided under the <a
+href="https://www.oasis-open.org/policies-guidelines/ipr#RF-on-RAND-Mode">RF on
+RAND Terms</a> Mode of the <a
+href="https://www.oasis-open.org/policies-guidelines/ipr">OASIS IPR Policy</a>,
+the mode chosen when the Technical Committee was established. For information
+on whether any patents have been disclosed that may be essential to
+implementing this specification, and any offers of patent licensing terms,
+please refer to the Intellectual Property Rights section of the TC's web page (<a
+href="https://www.oasis-open.org/committees/pkcs11/ipr.php">https://www.oasis-open.org/committees/pkcs11/ipr.php</a>).</p>
+
+<h2><a name="_Toc10196639"></a><a name="_Toc525136362">1.2 Terminology</a></h2>
+
+<p class=MsoNormal>The key words MUST, MUST NOT, REQUIRED, SHALL, SHALL
+NOT, SHOULD, SHOULD NOT, RECOMMENDED, MAY, and OPTIONAL in this
+document are to be interpreted as described in [<a href="#RFC2119">RFC2119</a>].</p>
+
+<h2><a name="_Toc10196640"></a><a name="_Toc525136363"></a><a
+name="_Toc287332008"></a><a name="_Toc85472894"></a><a name="_Toc12011611"></a><a
+name="_Ref7502892">1.3 Normative</a> References</h2>
+
+<p class=Ref><a name="_Toc287332009"></a><a name="_Toc85472895"><span
+class=Refterm>[PKCS11-Base]</span><span class=Refterm><span style='font-weight:
+normal'>       </span></span><i>PKCS #11 Cryptographic Token Interface Base
+Specification Version 3.0.</i> Edited by Chris Zimman and Dieter Bong. Latest stage.
+</a><a
+href="https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.0/pkcs11-base-v3.0.html">https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.0/pkcs11-base-v3.0.html</a><span
+class=MsoHyperlink>.</span></p>
+
+<p class=Ref><span class=Refterm>[PKCS11-Curr]</span><span class=Refterm><span
+style='font-weight:normal'>        </span></span><i>PKCS #11 Cryptographic
+Token Interface Current Mechanisms Specification Version 3.0. </i>Edited by Chris
+Zimman and Dieter Bong. Latest stage. <a
+href="https://docs.oasis-open.org/pkcs11/pkcs11-curr/v3.0/pkcs11-curr-v3.0.html">https://docs.oasis-open.org/pkcs11/pkcs11-curr/v3.0/pkcs11-curr-v3.0.html</a><span
+class=MsoHyperlink>.</span></p>
+
+<p class=Ref><span class=Refterm>[PKCS11-Hist]         </span><i>PKCS #11
+Cryptographic Token Interface Historical Mechanisms Specification Version 3.0</i>.
+Edited by Chris Zimman and Dieter Bong. Latest stage. <a
+href="https://docs.oasis-open.org/pkcs11/pkcs11-hist/v3.0/pkcs11-hist-v3.0.html">https://docs.oasis-open.org/pkcs11/pkcs11-hist/v3.0/pkcs11-hist-v3.0.html</a><span
+class=MsoHyperlink>.</span></p>
+
+<p class=Ref><a name=rfc2119><span class=Refterm>[RFC2119]</span></a>               Bradner,
+S., Key words for use in RFCs to Indicate Requirement Levels, BCP 14, RFC
+2119, March 1997. <a href="http://www.ietf.org/rfc/rfc2119.txt">http://www.ietf.org/rfc/rfc2119.txt</a>.</p>
+
+<h2><a name="_Toc10196641"></a><a name="_Toc525136364">1.4 Non-Normative
+References</a></h2>
+
+<p class=Ref><span class=Refterm>[PKCS11-UG]          </span><span
+class=Refterm><i><span style='font-weight:normal'>PKCS #11 Cryptographic Token
+Interface Usage Guide Version 3.0</span></i></span><span class=Refterm><span
+style='font-weight:normal'>. Work in progress.</span></span></p>
+
+<div style='border:none;border-top:solid gray 1.0pt;padding:6.0pt 0in 0in 0in'>
+
+<h1><a name="_Toc10196642"></a><a name="_Toc525136365"></a><a
+name="_Toc416960539"></a><a name="_Toc381117167">2<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Profiles</a></h1>
+
+</div>
+
+<h2><a name="_Toc10196643"></a><a name="_Toc525136366"></a><a
+name="_Toc416960540"></a><a name="_Toc381117168">2.1 PKCS #11 Profiles</a></h2>
+
+<p class=MsoBodyText>This document defines a selected set of conformance clauses
+which form PKCS #11 Profiles. The PKCS 11 TC also welcomes proposals for new
+profiles. PKCS 11 TC members are encouraged to submit these proposals to the
+PKCS 11 TC for consideration for inclusion in a future version of this
+TC-approved document. However, some OASIS members MAY simply wish to inform the
+committee of profiles or other work related to PKCS #11. </p>
+
+<h2 style='margin-left:.5in;text-indent:-.5in'><a name="_Toc10196644"></a><a
+name="_Toc525136367"></a><a name="_Toc416960541"></a><a name="_Toc381117169"></a><a
+name="_Toc332820672"></a><a name="_Toc314840065"></a><a name="_Toc305682172">2.2
+Guidelines for Specifying Conformance Clauses</a></h2>
+
+<p class=MsoBodyText>This section provides a checklist of issues that SHALL be
+addressed by each clause.</p>
+
+<p class=MsoBodyText style='margin-top:0in;margin-right:0in;margin-bottom:6.0pt;
+margin-left:.5in;text-indent:-.25in'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Implement functionality as mandated by <b>[PKCS11-Base] Section 6 </b> (PKCS#11
+Implementation Conformance)</p>
+
+<p class=MsoBodyText style='margin-top:0in;margin-right:0in;margin-bottom:6.0pt;
+margin-left:.5in;text-indent:-.25in'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Specify the list of additional data types that SHALL be supported</p>
+
+<p class=MsoBodyText style='margin-top:0in;margin-right:0in;margin-bottom:6.0pt;
+margin-left:.5in;text-indent:-.25in'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Specify the list of additional attributes that SHALL be supported</p>
+
+<p class=MsoBodyText style='margin-top:0in;margin-right:0in;margin-bottom:6.0pt;
+margin-left:.5in;text-indent:-.25in'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Specify the list of additional objects that SHALL be supported</p>
+
+<p class=MsoBodyText style='margin-top:0in;margin-right:0in;margin-bottom:6.0pt;
+margin-left:.5in;text-indent:-.25in'>5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Specify the list of additional functions that SHALL be supported</p>
+
+<p class=MsoBodyText style='margin-top:0in;margin-right:0in;margin-bottom:6.0pt;
+margin-left:.5in;text-indent:-.25in'>6.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Specify the list of additional mechanisms that SHALL be supported</p>
+
+<p class=MsoBodyText>&nbsp;</p>
+
+<h2 style='margin-left:.5in;text-indent:-.5in'><a name="_Toc10196645"></a><a
+name="_Toc525136368"></a><a name="_Toc416960542"></a><a name="_Toc381117170"></a><a
+name="_Toc332820675"></a><a name="_Toc314840068"></a><a name="_Toc305682175">2.3
+Guidelines for Validating Conformance to PKCS #11 Profiles</a></h2>
+
+<p class=MsoNormal>A PKCS #11 provider implementation SHALL claim conformance
+to a specific provider profile only if it instruments all required data types,
+attributes, objects, functions and mechanisms of that profile</p>
+
+<p class=MsoBodyText style='margin-top:0in;margin-right:0in;margin-bottom:6.0pt;
+margin-left:.5in;text-indent:-.25in'><span style='font-family:"Arial",sans-serif;
+color:black'><span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='color:black'>All data types specified as required in
+that profile</span></p>
+
+<p class=MsoBodyText style='margin-top:0in;margin-right:0in;margin-bottom:6.0pt;
+margin-left:.5in;text-indent:-.25in'><span style='font-family:"Arial",sans-serif;
+color:black'><span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='color:black'>All attributes specified as required in
+that profile</span></p>
+
+<p class=MsoBodyText style='margin-top:0in;margin-right:0in;margin-bottom:6.0pt;
+margin-left:.5in;text-indent:-.25in'><span style='font-family:"Arial",sans-serif;
+color:black'><span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='color:black'>All objects specified as required in
+that profile</span></p>
+
+<p class=MsoBodyText style='margin-top:0in;margin-right:0in;margin-bottom:6.0pt;
+margin-left:.5in;text-indent:-.25in'><span style='font-family:"Arial",sans-serif;
+color:black'><span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='color:black'>All functions specified as required in
+that profile</span></p>
+
+<p class=MsoBodyText style='margin-top:0in;margin-right:0in;margin-bottom:6.0pt;
+margin-left:.5in;text-indent:-.25in'><span style='font-family:"Arial",sans-serif;
+color:black'><span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='color:black'>All mechanisms specified as required in
+that profile</span></p>
+
+<p class=MsoNormal>A PKCS #11 consumer implementation SHALL claim conformance
+to a specific consumer profile only if it instruments all required data types, attributes,
+objects, functions and mechanisms of that profile</p>
+
+<p class=MsoBodyText style='margin-top:0in;margin-right:0in;margin-bottom:6.0pt;
+margin-left:.5in;text-indent:-.25in'><span style='font-family:"Arial",sans-serif;
+color:black'><span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='color:black'>All data types specified as required in
+that profile</span></p>
+
+<p class=MsoBodyText style='margin-top:0in;margin-right:0in;margin-bottom:6.0pt;
+margin-left:.5in;text-indent:-.25in'><span style='font-family:"Arial",sans-serif;
+color:black'><span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='color:black'>All attributes specified as required in
+that profile</span></p>
+
+<p class=MsoBodyText style='margin-top:0in;margin-right:0in;margin-bottom:6.0pt;
+margin-left:.5in;text-indent:-.25in'><span style='font-family:"Arial",sans-serif;
+color:black'><span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='color:black'>All objects specified as required in
+that profile</span></p>
+
+<p class=MsoBodyText style='margin-top:0in;margin-right:0in;margin-bottom:6.0pt;
+margin-left:.5in;text-indent:-.25in'><span style='font-family:"Arial",sans-serif;
+color:black'><span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='color:black'>All functions specified as required in
+that profile</span></p>
+
+<p class=MsoBodyText style='margin-top:0in;margin-right:0in;margin-bottom:6.0pt;
+margin-left:.5in;text-indent:-.25in'><span style='font-family:"Arial",sans-serif;
+color:black'><span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='color:black'>All mechanisms specified as required in
+that profile</span></p>
+
+<p class=MsoBodyText><span style='color:black'>&nbsp;</span></p>
+
+<p class=MsoBodyText><span style='color:black'>Note: items may be specified
+either directly in a profile or by reference to other profiles. Where another
+profile is referenced as required, the combination of the requirements of all
+referenced required profiles (directly or indirectly) SHALL apply.</span></p>
+
+<h2 style='margin-left:.5in;text-indent:-.5in'><a name="_Toc10196646"></a><a
+name="_Toc525136369">2.4 Defined Profile Identifiers</a></h2>
+
+<p class=MsoNormal>Profile objects (object class CKO_PROFILE) describe which
+PKCS #11 profiles the token implements. </p>
+
+<p class=MsoNormal>The <b>CKA_PROFILE</b> attribute identifies a profile that
+the token implements.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='margin-left:5.4pt;border-collapse:collapse'>
+ <thead>
+  <tr>
+   <td width=162 valign=top style='width:121.5pt;border-top:solid black 1.5pt;
+   border-left:solid black 1.5pt;border-bottom:solid black 1.0pt;border-right:
+   none;padding:0in 5.4pt 0in 5.4pt'>
+   <p class=Table style='page-break-after:avoid'><b><span style='font-size:
+   10.0pt;font-family:"Arial",sans-serif'>Attribute</span></b></p>
+   </td>
+   <td width=156 valign=top style='width:117.0pt;border-top:solid black 1.5pt;
+   border-left:solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:
+   none;padding:0in 5.4pt 0in 5.4pt'>
+   <p class=Table style='page-break-after:avoid'><b><span style='font-size:
+   10.0pt;font-family:"Arial",sans-serif'>Data type</span></b></p>
+   </td>
+   <td width=267 valign=top style='width:200.4pt;border-top:1.5pt;border-left:
+   1.0pt;border-bottom:1.0pt;border-right:1.5pt;border-color:black;border-style:
+   solid;padding:0in 5.4pt 0in 5.4pt'>
+   <p class=Table style='page-break-after:avoid'><b><span style='font-size:
+   10.0pt;font-family:"Arial",sans-serif'>Meaning</span></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td width=162 valign=top style='width:121.5pt;border-top:none;border-left:
+  solid black 1.5pt;border-bottom:solid black 1.0pt;border-right:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=Table style='page-break-after:avoid'><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'>CKA_PROFILE_ID</span></p>
+  </td>
+  <td width=156 valign=top style='width:117.0pt;border-top:none;border-left:
+  solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:none;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=Table style='page-break-after:avoid'><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'>CK_PROFILE_ID</span></p>
+  </td>
+  <td width=267 valign=top style='width:200.4pt;border-top:none;border-left:
+  solid black 1.0pt;border-bottom:solid black 1.0pt;border-right:solid black 1.5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=Table style='page-break-after:avoid'><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'>ID of the supported profile.</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>The following table defines the <b><span style='font-family:
+"Arial",sans-serif'>CK_PROFILE_ID</span></b><span style='font-family:"Arial",sans-serif'>
+values:</span></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 width="100%"
+ style='width:100.0%;border-collapse:collapse;border:none'>
+ <thead>
+  <tr>
+   <td width="58%" valign=top style='width:58.78%;border-top:1.5pt;border-left:
+   1.5pt;border-bottom:1.0pt;border-right:1.0pt;border-color:black;border-style:
+   solid;padding:0in 5.75pt 0in 5.75pt'>
+   <p class=Table style='page-break-after:avoid'><b><span lang=SV
+   style='font-size:10.0pt;font-family:"Arial",sans-serif'>Constant</span></b></p>
+   </td>
+   <td width="41%" valign=top style='width:41.22%;border-top:solid black 1.5pt;
+   border-left:none;border-bottom:solid black 1.0pt;border-right:solid black 1.5pt;
+   padding:0in 5.75pt 0in 5.75pt'>
+   <p class=Table style='page-break-after:avoid'><b><span style='font-size:
+   10.0pt;font-family:"Arial",sans-serif'>Meaning</span></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr style='height:3.25pt'>
+  <td width="58%" valign=top style='width:58.78%;border-top:none;border-left:
+  solid black 1.5pt;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0in 5.75pt 0in 5.75pt;height:3.25pt'>
+  <p class=Table style='page-break-after:avoid'><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'>CKP_INVALID_ID</span></p>
+  </td>
+  <td width="41%" valign=top style='width:41.22%;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.5pt;
+  padding:0in 5.75pt 0in 5.75pt;height:3.25pt'>
+  <p class=Table style='page-break-after:avoid'><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'>Invalid profile</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="58%" valign=top style='width:58.78%;border-top:none;border-left:
+  solid black 1.5pt;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0in 5.75pt 0in 5.75pt'>
+  <p class=Table style='page-break-after:avoid'><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'>CKP_BASELINE_PROVIDER</span></p>
+  </td>
+  <td width="41%" valign=top style='width:41.22%;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.5pt;
+  padding:0in 5.75pt 0in 5.75pt'>
+  <p class=Table style='page-break-after:avoid'><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'>Baseline Provider </span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="58%" valign=top style='width:58.78%;border-top:none;border-left:
+  solid black 1.5pt;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0in 5.75pt 0in 5.75pt'>
+  <p class=Table style='page-break-after:avoid'><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'>CKP_EXTENDED_PROVIDER</span></p>
+  </td>
+  <td width="41%" valign=top style='width:41.22%;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.5pt;
+  padding:0in 5.75pt 0in 5.75pt'>
+  <p class=Table style='page-break-after:avoid'><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'>Extended Provider</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="58%" valign=top style='width:58.78%;border-top:none;border-left:
+  solid black 1.5pt;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0in 5.75pt 0in 5.75pt'>
+  <p class=Table style='page-break-after:avoid'><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'>CKP_AUTHENTICATION_TOKEN</span></p>
+  </td>
+  <td width="41%" valign=top style='width:41.22%;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.5pt;
+  padding:0in 5.75pt 0in 5.75pt'>
+  <p class=Table style='page-break-after:avoid'><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'>Authentication Token</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="58%" valign=top style='width:58.78%;border-top:none;border-left:
+  solid black 1.5pt;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  padding:0in 5.75pt 0in 5.75pt'>
+  <p class=Table style='page-break-after:avoid'><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'>CKP_PUBLIC_CERTIFICATES_TOKEN</span></p>
+  </td>
+  <td width="41%" valign=top style='width:41.22%;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.5pt;
+  padding:0in 5.75pt 0in 5.75pt'>
+  <p class=Table style='page-break-after:avoid'><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'>Public Certificates Token</span></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="58%" valign=top style='width:58.78%;border-top:none;border-left:
+  solid black 1.5pt;border-bottom:solid black 1.5pt;border-right:solid black 1.0pt;
+  padding:0in 5.75pt 0in 5.75pt'>
+  <p class=Table style='page-break-after:avoid'><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'>CKP_VENDOR_DEFINED</span></p>
+  </td>
+  <td width="41%" valign=top style='width:41.22%;border-top:none;border-left:
+  none;border-bottom:solid black 1.5pt;border-right:solid black 1.5pt;
+  padding:0in 5.75pt 0in 5.75pt'>
+  <p class=Table style='page-break-after:avoid'><span style='font-size:10.0pt;
+  font-family:"Arial",sans-serif'>Vendor defined</span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<div style='border:none;border-top:solid gray 1.0pt;padding:6.0pt 0in 0in 0in'>
+
+<h1><a name="_Toc10196647"></a><a name="_Toc525136370"></a><a
+name="_Toc416960543"></a><a name="_Toc381117171"></a><a name="_Toc332820732"></a><a
+name="_Toc314840125"></a><a name="_Toc305682258">3<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>Conformance</a> </h1>
+
+</div>
+
+<h2><a name="_Toc10196648"></a><a name="_Toc525136371"></a><a
+name="_Toc416960544"></a><a name="_Toc381117172">3.1 Purpose of this Section</a></h2>
+
+<p class=MsoNormal>The following subsections describe currently-defined
+profiles related to the use of PKCS #11. The profiles define classes of PKCS
+#11 functionality to which an implementation can declare conformance.</p>
+
+<h2><a name="_Ref352781355"></a><a name="_Toc10196649"></a><a
+name="_Toc525136372"></a><a name="_Toc416960545"></a><a name="_Toc381117173"></a><a
+name="_Ref367153565"></a><a name="_Toc367168349"></a>3.2 Baseline Consumer
+Clause</h2>
+
+<p class=MsoNormal>A PKCS #11 consumer calls a PKCS #11 provider implementation
+of the PKCS #11 API in order to use the cryptographic functionality from that
+provider.</p>
+
+<p class=MsoNormal>This profile specifies the most basic functionality that
+would be expected of a conformant PKCS #11 consumer  the ability to consume
+information via the cryptographic services offered by a provider.</p>
+
+<h3><a name="_Toc10196650"></a><a name="_Toc525136373"></a><a
+name="_Toc416960546"></a><a name="_Toc381117174">3.2.1 Implementation
+Conformance</a></h3>
+
+<p class=MsoNormal>An implementation is a conforming Baseline Consumer Clause
+if it meets the conditions as outlined in the following section.</p>
+
+<h3><a name="_Toc10196651"></a><a name="_Toc525136374"></a><a
+name="_Toc416960547"></a><a name="_Toc381117175">3.2.2 Conformance of a PKCS #11
+Baseline Consumer</a></h3>
+
+<p class=MsoNormal>An implementation conforms to this specification as a
+Baseline Consumer if it meets the following conditions:</p>
+
+<ol style='margin-top:0in' start=1 type=1>
+ <li class=MsoNormal>Supports the conditions required by the PKCS #11
+     conformance clauses ([PKCS11-Base] Section 6 (PKCS#11 Implementation
+     Conformance)</li>
+ <li class=MsoNormal>Supports the following data types:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>CK_VERSION ([PKCS11-Base] 3.1)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>CK_INFO ([PKCS11-Base] 3.1)</li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'><span style='color:black'>CK_SLOT_ID ([PKCS11-Base]
+      3.2)</span></li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'><span style='color:black'>CK_SLOT_INFO ([PKCS11-Base]
+      3.2)</span></li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'><span style='color:black'>CK_TOKEN_INFO ([PKCS11-Base]
+      3.2)</span></li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'><span style='color:black'>CK_SESSION_HANDLE ([PKCS11-Base]
+      3.3)</span></li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'><span style='color:black'>CK_USER_TYPE ([PKCS11-Base]
+      3.3)</span></li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'><span style='color:black'>CK_SESSION_INFO ([PKCS11-Base]
+      3.3)</span></li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>CK_OBJECT_HANDLE ([PKCS11-Base] 3.4)</li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>CK_OBJECT_CLASS ([PKCS11-Base] 3.4)</li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>CK_ATTRIBUTE_TYPE ([PKCS11-Base] 3.4)</li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>CK_ATTRIBUTE ([PKCS11-Base] 3.4)</li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>CK_RV ([PKCS11-Base] 3.6)</li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>CK_FUNCTION_LIST ([PKCS11-Base] 3.6)</li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>CK_C_INITIALIZE_ARGS ([PKCS11-Base] 3.7)</li>
+ </ol>
+ <li class=MsoNormal>Supports the following attributes:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>CKA_CLASS ([PKCS11-Base] 4.2)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>CKA_VALUE ([PKCS11-Base])  </li>
+ </ol>
+ <li class=MsoNormal>Supports the following objects:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>None specified</li>
+ </ol>
+ <li class=MsoNormal>Supports the following functions:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_GetFunctionList ([PKCS11-Base]
+      5.4)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'><span style='color:windowtext'>C_Initialize</span>
+      ([PKCS11-Base] 5.4)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_<span style='color:windowtext'>Finalize</span>
+      ([PKCS11-Base] 5.4)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_<span style='color:windowtext'>GetInfo</span>
+      ([PKCS11-Base] 5.4)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_<span style='color:windowtext'>GetSlotList</span>
+      ([PKCS11-Base] 5.5)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_<span style='color:windowtext'>GetSlotInfo</span>
+      ([PKCS11-Base] 5.5)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_<span style='color:windowtext'>GetTokenInfo</span>
+      ([PKCS11-Base] 5.5)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_<span style='color:windowtext'>OpenSession</span>
+      ([PKCS11-Base] 5.6)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_<span style='color:windowtext'>CloseSession</span>
+      ([PKCS11-Base] 5.6)</li>
+ </ol>
+ <li class=MsoNormal>Supports the following mechanisms:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>None specified</li>
+ </ol>
+ <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;margin-bottom:
+     .0001pt;text-autospace:none'>Supports Error Handling ([PKCS11-Base] 5.1)
+     for any supported object, function or mechanism</li>
+ <li class=MsoNormal>Optionally supports any clause within [PKCS11-Base]<b> </b>that
+     is not listed above</li>
+ <li class=MsoNormal>Optionally supports extensions outside the scope of this
+     standard (e.g., vendor defined extensions, conformance clauses) that do
+     not contradict any PKCS #11 requirements</li>
+</ol>
+
+<h2><a name="_Toc10196652"></a><a name="_Toc525136375"></a><a
+name="_Toc416960548"></a><a name="_Toc381117176"></a><a name="_Ref367168422">3.3
+Baseline Provider Clause</a></h2>
+
+<p class=MsoNormal>A PKCS #11 provider makes cryptographic functionality
+available to a consuming application in terms of the PKCS #11 API.</p>
+
+<p class=MsoNormal>This profile specifies the most basic functionality that
+would be expected of a conformant PKCS #11 provider  the ability to provide
+information about the capabilities of the cryptographic services provided.</p>
+
+<h3><a name="_Toc10196653"></a><a name="_Toc525136376"></a><a
+name="_Toc416960549"></a><a name="_Toc381117177"></a><a name="_Toc332820737"></a><a
+name="_Toc314840130"></a><a name="_Toc305682263">3.3.1 Implementation
+Conformance</a></h3>
+
+<p class=MsoNormal>An implementation is a conforming Baseline Provider if it
+meets the conditions as outlined in the following section.</p>
+
+<h3><a name="_Toc10196654"></a><a name="_Toc525136377"></a><a
+name="_Toc416960550"></a><a name="_Toc381117178"></a><a name="_Toc332820738"></a><a
+name="_Toc314840131"></a><a name="_Toc305682264">3.3.2 Conformance of a PKCS #11
+Baseline Provider</a></h3>
+
+<p class=MsoNormal>An implementation conforms to this specification as a
+Baseline Provider if it meets the following conditions:</p>
+
+<ol style='margin-top:0in' start=1 type=1>
+ <li class=MsoNormal>Supports the conditions required by the PKCS #11
+     conformance clauses ([PKCS11-Base] Section 6 (PKCS#11 Implementation
+     Conformance)</li>
+ <li class=MsoNormal>Supports the following data types:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>CK_VERSION ([PKCS11-Base] 3.1)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>CK_INFO ([PKCS11-Base] 3.1)</li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'><span style='color:black'>CK_SLOT_ID ([PKCS11-Base]
+      3.2)</span></li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'><span style='color:black'>CK_SLOT_INFO ([PKCS11-Base]
+      3.2)</span></li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'><span style='color:black'>CK_TOKEN_INFO ([PKCS11-Base]
+      3.2)</span></li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'><span style='color:black'>CK_SESSION_HANDLE ([PKCS11-Base]
+      3.3)</span></li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'><span style='color:black'>CK_USER_TYPE ([PKCS11-Base]
+      3.3)</span></li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'><span style='color:black'>CK_SESSION_INFO ([PKCS11-Base]
+      3.3)</span></li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>CK_OBJECT_HANDLE ([PKCS11-Base] 3.4)</li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>CK_OBJECT_CLASS ([PKCS11-Base] 3.4)</li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>CK_ATTRIBUTE_TYPE ([PKCS11-Base] 3.4)</li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>CK_ATTRIBUTE ([PKCS11-Base] 3.4)</li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>CK_PROFILE_ID ([PKCS11-Base] 3.4)</li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>CK_RV ([PKCS11-Base] 3.6)</li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>CK_FUNCTION_LIST ([PKCS11-Base] 3.6)</li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>CK_INTERFACE ([PKCS11-Base] 3.6)</li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>CK_C_INITIALIZE_ARGS ([PKCS11-Base] 3.7)</li>
+ </ol>
+ <li class=MsoNormal>Supports the following attributes:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>CKA_CLASS ([PKCS11-Base] 4.2)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>CKA_TOKEN  ([PKCS11-Base] 4.2)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>CKA_VALUE ([PKCS11-Base])  </li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>CKA_ID ([PKCS11-Base])</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>CKA_PRIVATE ([PKCS11-Base]
+      4.4)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>CKA_MODIFIABLE ([PKCS11-Base)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>CKA_LABEL ([PKCS11-Base)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>CKA_UNIQUE_IDENTIFIER
+      ([PKCS11-Base] 4.4)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>CKA_PROFILE_ID ([PKCS11-Base]
+      4.13)</li>
+ </ol>
+ <li class=MsoNormal>Supports the following objects:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormal>CKO_PROFILE ([PKCS11-Base] 4.13) with value
+      CKP_BASELINE_PROVIDER</li>
+ </ol>
+ <li class=MsoNormal>Supports the following functions:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_GetFunctionList ([PKCS11-Base]
+      5.4)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_GetInterfaceList
+      ([PKCS11-Base] 5.4)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_GetInterface ([PKCS11-Base]
+      5.4)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'><span style='color:windowtext'>C_Initialize</span>
+      ([PKCS11-Base] 5.4)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_<span style='color:windowtext'>Finalize</span>
+      ([PKCS11-Base] 5.4)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_<span style='color:windowtext'>GetInfo</span>
+      ([PKCS11-Base] 5.4)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_<span style='color:windowtext'>GetSlotList</span>
+      ([PKCS11-Base] 5.5)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_<span style='color:windowtext'>GetSlotInfo</span>
+      ([PKCS11-Base] 5.5)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_<span style='color:windowtext'>GetTokenInfo</span>
+      ([PKCS11-Base] 5.5)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_<span style='color:windowtext'>OpenSession</span>
+      ([PKCS11-Base] 5.6)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_<span style='color:windowtext'>CloseSession</span>
+      ([PKCS11-Base] 5.6)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_GetSessionInfo ([PKCS11-Base]
+      5.6) </li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_FindObjectsInit ([PKCS11-Base]
+      5.6)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_FindObjects ([PKCS11-Base] 5.6)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_FindObjectsFinal ([PKCS11-Base]
+      5.6)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_GetAttributeValue ([PKCS11-Base]
+      5.7)</li>
+ </ol>
+ <li class=MsoNormal>Supports the following mechanisms:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'><span style='color:windowtext'>None
+      specified</span></li>
+ </ol>
+ <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;margin-bottom:
+     .0001pt;text-autospace:none'>Supports Error Handling ([PKCS11-Base] 5.1)
+     for any supported object, function or mechanism</li>
+ <li class=MsoNormal>Optionally supports any clause within [PKCS11-Base]<b> </b>that
+     is not listed above</li>
+ <li class=MsoNormal>Optionally supports extensions outside the scope of this
+     standard (e.g., vendor defined extensions, conformance clauses) that do
+     not contradict any PKCS #11 requirements</li>
+</ol>
+
+<h2><a name="_Toc10196655"></a><a name="_Toc525136378"></a><a
+name="_Toc416960551"></a><a name="_Toc381117179">3.4 Extended Consumer Clause</a></h2>
+
+<p class=MsoNormal>This profile builds on the PKCS#11 Baseline Consumer profile
+to add support for mechanism-based usage.</p>
+
+<h3><a name="_Toc10196656"></a><a name="_Toc525136379"></a><a
+name="_Toc416960552"></a><a name="_Toc381117180">3.4.1 Implementation
+Conformance</a></h3>
+
+<p class=MsoNormal>An implementation is a conforming Extended Consumer if it
+meets the conditions as outlined in the following section.</p>
+
+<h3><a name="_Toc10196657"></a><a name="_Toc525136380"></a><a
+name="_Toc416960553"></a><a name="_Toc381117181">3.4.2 Conformance of a PKCS #11
+Extended Consumer</a></h3>
+
+<p class=MsoNormal>An implementation conforms to this specification as Extended
+Consumer if it meets the following conditions:</p>
+
+<ol style='margin-top:0in' start=1 type=1>
+ <li class=MsoNormal>Supports the conditions required by the PKCS11 conformance
+     clauses ([PKCS11-Base] Section 6 (PKCS#11 Implementation Conformance)</li>
+ <li class=MsoNormal>Supports the conditions required by the PKCS11 Baseline
+     Consumer clauses section 3.2</li>
+ <li class=MsoNormal>Supports the following data types:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>CK_MECHANISM_TYPE ([PKCS11-Base] 3.4)</li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>CK_MECHANISM ([PKCS11-Base] 3.4)</li>
+ </ol>
+ <li class=MsoNormal>Supports the following attributes:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>None specified</li>
+ </ol>
+ <li class=MsoNormal>Supports the following objects:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>None specified</li>
+ </ol>
+ <li class=MsoNormal>Supports the following functions:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_<span style='color:windowtext'>GetMechanismList</span>
+      ([PKCS11-Base] 5.5)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_<span style='color:windowtext'>GetMechanismInfo</span>
+      ([PKCS11-Base] 5.5)</li>
+ </ol>
+ <li class=MsoNormal>Supports the following mechanisms:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'><span style='color:windowtext'>None
+      specified</span></li>
+ </ol>
+ <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;margin-bottom:
+     .0001pt;text-autospace:none'>Supports Error Handling ([PKCS11-Base] 5.1)
+     for any supported object, function or mechanism</li>
+ <li class=MsoNormal>Optionally supports any clause within [PKCS11-Base]<b> </b>that
+     is not listed above</li>
+ <li class=MsoNormal>Optionally supports extensions outside the scope of this
+     standard (e.g., vendor defined extensions, conformance clauses) that do
+     not contradict any PKCS #11 requirements</li>
+</ol>
+
+<h2><a name="_Toc10196658"></a><a name="_Toc525136381"></a><a
+name="_Toc416960554"></a><a name="_Toc381117182">3.5 Extended Provider Clause</a></h2>
+
+<p class=MsoNormal>This profile builds on the PKCS#11 Baseline Provider to add
+support for mechanism-based usage.</p>
+
+<h3><a name="_Toc10196659"></a><a name="_Toc525136382"></a><a
+name="_Toc416960555"></a><a name="_Toc381117183">3.5.1 Implementation
+Conformance</a></h3>
+
+<p class=MsoNormal>An implementation is a conforming Extended Provider if it
+meets the conditions as outlined in the following section.</p>
+
+<h3><a name="_Toc10196660"></a><a name="_Toc525136383"></a><a
+name="_Toc416960556"></a><a name="_Toc381117184">3.5.2 Conformance of a PKCS #11
+Extended Provider</a></h3>
+
+<p class=MsoNormal>An implementation conforms to this specification as Extended
+Provider if it meets the following conditions:</p>
+
+<ol style='margin-top:0in' start=1 type=1>
+ <li class=MsoNormal>Supports the conditions required by the PKCS #11
+     conformance clauses ([PKCS11-Base] Section 6 (PKCS#11 Implementation
+     Conformance)</li>
+ <li class=MsoNormal>Supports the conditions required by the PKCS #11 Baseline
+     Provider clauses section 3.3.</li>
+ <li class=MsoNormal>Supports the following data types:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>CK_MECHANISM_TYPE ([PKCS11-Base] 3.4)</li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>CK_MECHANISM ([PKCS11-Base] 3.4)</li>
+ </ol>
+ <li class=MsoNormal>Supports the following attributes:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>None specified</li>
+ </ol>
+ <li class=MsoNormal>Supports the following objects:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormal>CKO_PROFILE ([PKCS11-Base] 4.13) with value
+      CKP_EXTENDED_PROVIDER</li>
+ </ol>
+ <li class=MsoNormal>Supports the following functions:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_<span style='color:windowtext'>GetMechanismList</span>
+      ([PKCS11-Base] 5.5)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_<span style='color:windowtext'>GetMechanismInfo</span>
+      ([PKCS11-Base] 5.5)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_<span style='color:windowtext'>Login</span>
+      ([PKCS11-Base] 5.6)</li>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'>C_LoginUser ([PKCS11-Base]
+      5.6)</li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'><span style='color:black'>C_Logout ([PKCS11-Base] 5.6)</span></li>
+ </ol>
+ <li class=MsoNormal>Supports the following mechanisms:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;
+      margin-bottom:.0001pt;text-autospace:none'><span style='color:windowtext'>None
+      specified</span> </li>
+ </ol>
+ <li class=MsoNormalCxSpMiddle style='color:black;margin-bottom:0in;margin-bottom:
+     .0001pt;text-autospace:none'>Supports Error Handling ([PKCS11-Base] 5.1)
+     for any supported object, function or mechanism</li>
+ <li class=MsoNormal>Optionally supports any clause within [PKCS11-Base]<b> </b>that
+     is not listed above</li>
+ <li class=MsoNormal>Optionally supports extensions outside the scope of this
+     standard (e.g., vendor defined extensions, conformance clauses) that do
+     not contradict any PKCS #11 requirements</li>
+</ol>
+
+<h2><a name="_Toc10196661"></a><a name="_Toc525136384"></a><a
+name="_Toc416960557"></a><a name="_Toc381117185">3.6 Authentication Token
+Clause</a></h2>
+
+<p class=MsoNormal>This profile builds on the PKCS #11 Baseline Provider and/or
+Baseline Consumer profiles to provide for use in the context of an
+authentication token.</p>
+
+<h3><a name="_Toc10196662"></a><a name="_Toc525136385"></a><a
+name="_Toc416960558"></a><a name="_Toc381117186">3.6.1 Implementation
+Conformance</a></h3>
+
+<p class=MsoNormal>An implementation is a conforming Authentication Token if it
+meets the conditions as outlined in the following section.</p>
+
+<h3><a name="_Toc10196663"></a><a name="_Toc525136386"></a><a
+name="_Toc416960559"></a><a name="_Toc381117187">3.6.2 Conformance of an Authentication
+Token</a></h3>
+
+<p class=MsoNormal>An implementation conforms to this specification as an Authentication
+Token if it meets the following conditions:</p>
+
+<ol style='margin-top:0in' start=1 type=1>
+ <li class=MsoNormal>If the implementation is a consumer then it SHALL support
+     the conditions required by the PKCS #11 Baseline Consumer Clause (Section 3.2)</li>
+ <li class=MsoNormal>If the implementation is a provider then it SHALL support
+     the conditions required by the PKCS #11 Baseline Provider Clause (Section 3.3)</li>
+ <li class=MsoNormal>Supports the following data types:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>None specified</li>
+ </ol>
+ <li class=MsoNormal>Supports the following attributes:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>None specified</li>
+ </ol>
+ <li class=MsoNormal>Supports the following objects:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormal>CKO_PRIVATE_KEY ([PKCS11-Base] 4.9)</li>
+  <li class=MsoNormal>CKO_PUBLIC_KEY ([PKCS11-Base] 4.8)</li>
+  <li class=MsoNormal>CKO_PROFILE ([PKCS11-Base] 4.13) with value
+      CKP_AUTHENTICATION_TOKEN</li>
+ </ol>
+ <li class=MsoNormal>Supports the following functions:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormal>C_Login ([PKCS11-Base] 5.6)</li>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'><span style='color:black'>C_LoginUser ([PKCS11-Base]
+      5.6)</span></li>
+  <li class=MsoNormal>C_Logout ([PKCS11-Base] 5.6)</li>
+  <li class=MsoNormal>C_SignInit ([PKCS11-Base] 5.13)</li>
+  <li class=MsoNormal>C_Sign and/or C_SignUpdate and C_SignFinal ([PKCS11-Base]
+      5.13)</li>
+ </ol>
+ <li class=MsoNormal>Supports the following mechanisms:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormal>None specified</li>
+ </ol>
+ <li class=MsoNormal>Optionally supports any clause within [PKCS11-Base]<b> </b>that
+     is not listed above</li>
+ <li class=MsoNormal>Optionally supports extensions outside the scope of this
+     standard (e.g., vendor defined extensions, conformance clauses) that do
+     not contradict any PKCS #11 requirements.</li>
+</ol>
+
+<h2><a name="_Toc287332012"></a><a name="_Toc85472897"></a><a
+name="_Toc10196664"></a><a name="_Toc525136387"></a><a name="_Toc523934473">3.7
+Public Certificates Token Clause</a></h2>
+
+<p class=MsoNormal>This profile builds on the PKCS #11 Baseline Provider and/or
+Baseline Consumer profiles to provide for use in the context of a public
+certificates token.</p>
+
+<h3><a name="_Toc10196665"></a><a name="_Toc525136388"></a><a
+name="_Toc523934474">3.7.1 Implementation Conformance</a></h3>
+
+<p class=MsoNormal>An implementation is a conforming Public Certificates Token
+if it meets the conditions as outlined in the following section.</p>
+
+<h3><a name="_Toc10196666"></a><a name="_Toc525136389"></a><a
+name="_Toc523934475">3.7.2 Conformance of a Public Certificates Token</a></h3>
+
+<p class=MsoNormal>An implementation conforms to this specification as Public
+Certificates Token if it meets the following conditions:</p>
+
+<ol style='margin-top:0in' start=1 type=1>
+ <li class=MsoNormal>If the implementation is a consumer then it SHALL support
+     the conditions required by the PKCS #11 Baseline Consumer Clause (Section 3.2)</li>
+ <li class=MsoNormal>If the implementation is a provider then it SHALL support
+     the conditions required by the PKCS #11 Baseline Provider Clause (Section 3.3)</li>
+ <li class=MsoNormal>Supports the following data types:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>None specified</li>
+ </ol>
+ <li class=MsoNormal>Supports the following attributes:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormalCxSpMiddle style='margin-bottom:0in;margin-bottom:.0001pt;
+      text-autospace:none'>None specified</li>
+ </ol>
+ <li class=MsoNormal>Supports the following objects:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormal>CKO_CERTIFICATE ([PKCS11-Base] 4.6)</li>
+  <li class=MsoNormal>CKO_PROFILE ([PKCS11-Base] 4.13) with value CKP_PUBLIC_CERTIFICATES_TOKEN</li>
+ </ol>
+ <li class=MsoNormal>Supports the following functions:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormal>None specified</li>
+ </ol>
+ <li class=MsoNormal>Supports the following mechanisms:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormal>None specified</li>
+ </ol>
+ <li class=MsoNormal>Supports the following object location requirements:</li>
+ <ol style='margin-top:0in' start=1 type=a>
+  <li class=MsoNormal>All certificates are publicly readable, able to be found
+      on the token without a login having been performed</li>
+  <li class=MsoNormal>All certificates for which a matching private key also
+      exists on the token must have a matching CKA_ID attribute for the
+      certificate and private key</li>
+  <li class=MsoNormal>One or more of the following conditions must be met:</li>
+ </ol>
+</ol>
+
+<p class=MsoNormal style='margin-left:1.5in;text-indent:-1.5in'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>i.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span>The
+matching private key for a certificate can be found via C_FindObjects using the
+matching CKA_ID value without a login having been performed;</p>
+
+<p class=MsoNormal style='margin-left:1.5in;text-indent:-1.5in'><span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>ii.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span>The
+matching public key for a certificate can be found via C_FindObjects using the
+matching CKA_ID value without a login having been performed.</p>
+
+<ol style='margin-top:0in' start=9 type=1>
+ <li class=MsoNormal>Optionally supports any clause within [PKCS11-Base]<b> </b>that
+     is not listed above</li>
+ <li class=MsoNormal>Optionally supports extensions outside the scope of this
+     standard (e.g., vendor defined extensions, conformance clauses) that do
+     not contradict any PKCS #11 requirements.</li>
+</ol>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<div style='border:none;border-top:solid gray 1.0pt;padding:6.0pt 0in 0in 0in'>
+
+<p class=AppendixHeading1><a name="_Toc10196667"></a><a name="_Toc525136390"></a><a
+name="_Toc416960560"></a><a name="_Toc381117188"></a><a name="_Toc351385629">Appendix
+A.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span>Acknowledgments</a></p>
+
+</div>
+
+<p class=MsoNormal>The following individuals have participated in the creation
+of this specification and are gratefully acknowledged:</p>
+
+<p class=Titlepageinfo>Participants:</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Benton Stark
+- Cisco Systems</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Anthony
+Berglas - Cryptsoft Pty Ltd.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Justin
+Corlett - Cryptsoft Pty Ltd.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Tony Cox -
+Cryptsoft Pty Ltd.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Tim Hudson -
+Cryptsoft Pty Ltd.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Bruce Rich -
+Cryptsoft Pty Ltd.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Greg Scott -
+Cryptsoft Pty Ltd.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Jason
+Thatcher - Cryptsoft Pty Ltd.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Magda
+Zdunkiewicz - Cryptsoft Pty Ltd.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Andrew Byrne
+- Dell</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>David Horton
+- Dell</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Kevin Mooney
+- Fornetix</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Gerald
+Stueve - Fornetix</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Charles
+White - Fornetix</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Matt Bauer -
+Galois, Inc.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Wan-The
+Chang - Google Inc.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Patrick
+Steuer - IBM</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Michele
+Drgon - Individual</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Gershon
+Janssen - Individual</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Oscar So -
+Individual</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Michelle
+Brochmann - Information Security Corporation</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Michael
+Mrkowitz - Information Security Corporation</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Jonathan
+Schulze-Hewett - Information Security Corporation</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Philip
+Lafrance - ISARA Corporation</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Thomas
+Hardjono - M.I.T.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Hamish
+Cameron - nCipher</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Paul King -
+nCipher</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Sander Temme
+- nCipher</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Chet Ensign
+- OASIS</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Jane Harnad
+- OASIS</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Web Master -
+OASIS</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Dee Schur -
+OASIS</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Xuelei Fan -
+Oracle</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Jan Friedel
+- Oracle</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Susan
+Gleeson - Oracle</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Dina
+Kurktchi-Nimeh - Oracle</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>John Leser -
+Oracle</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Darren
+Moffat - Oracle</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Mark Joseph
+- P6R, Inc</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Jim Susoy -
+P6R, Inc</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Roland Bramm
+- PrimeKey Solutions AB</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Warren
+Armstrong - QuintessenceLabs Pty Ltd.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Kenli Chong
+- QuintessenceLabs Pty Ltd.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>John
+Leiseboer - QuintessenceLabs Pty Ltd.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Florian
+Poppa - QuintessenceLabs Pty Ltd.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Martin
+Shannon - QuintessenceLabs Pty Ltd.</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Jakub Jelen
+- Red Hat</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Chris
+Malafis - Red Hat</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Robert
+Relyea - Red Hat</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Christian
+Bollich - Utimaco IS GmbH</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Dieter Bong
+- Utimaco IS GmbH</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Chris Meyer
+- Utimaco IS GmbH</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Daniel
+Minder - Utimaco IS GmbH</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Roland
+Reichenberg - Utimaco IS GmbH</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Manish
+Upasani - Utimaco IS GmbH</p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'>Steven
+Wierenga - Utimaco IS GmbH</p>
+
+<div style='border:none;border-top:solid gray 1.0pt;padding:6.0pt 0in 0in 0in'>
+
+<p class=AppendixHeading1><a name="_Toc10196668"></a><a name="_Toc525136391"></a><a
+name="_Toc416960561"></a><a name="_Toc381117189"></a><a name="_Toc351385633"></a><a
+name="_Toc287332014"></a><a name="_Toc85472898">Appendix B.<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span>Revision History</a></p>
+
+</div>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none'>
+ <tr>
+  <td width=102 valign=top style='width:76.45pt;border:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b>Revision</b></p>
+  </td>
+  <td width=94 valign=top style='width:70.5pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b>Date</b></p>
+  </td>
+  <td width=141 valign=top style='width:105.55pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b>Editor</b></p>
+  </td>
+  <td width=287 valign=top style='width:215.0pt;border:solid windowtext 1.0pt;
+  border-left:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><b>Changes Made</b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=102 valign=top style='width:76.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>wd06</p>
+  </td>
+  <td width=94 valign=top style='width:70.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'>28-May-2019</p>
+  </td>
+  <td width=141 valign=top style='width:105.55pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Tony Cox</p>
+  </td>
+  <td width=287 valign=top style='width:215.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Final cleanup of front introductory texts and links prior
+  to CSPRD</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=102 valign=top style='width:76.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>wd05</p>
+  </td>
+  <td width=94 valign=top style='width:70.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'>18-Apr-2019</p>
+  </td>
+  <td width=141 valign=top style='width:105.55pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Tim Hudson</p>
+  </td>
+  <td width=287 valign=top style='width:215.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Remove CKA_USER reference</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=102 valign=top style='width:76.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>wd04</p>
+  </td>
+  <td width=94 valign=top style='width:70.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'>16-Apr-2019</p>
+  </td>
+  <td width=141 valign=top style='width:105.55pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Tim Hudson</p>
+  </td>
+  <td width=287 valign=top style='width:215.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Update given function name changes in specification </p>
+  </td>
+ </tr>
+ <tr>
+  <td width=102 valign=top style='width:76.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>wd03</p>
+  </td>
+  <td width=94 valign=top style='width:70.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'>24-Sep-2018</p>
+  </td>
+  <td width=141 valign=top style='width:105.55pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Tim Hudson</p>
+  </td>
+  <td width=287 valign=top style='width:215.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Update based on list comments</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=102 valign=top style='width:76.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>wd02</p>
+  </td>
+  <td width=94 valign=top style='width:70.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>19-Sep-2018</p>
+  </td>
+  <td width=141 valign=top style='width:105.55pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Tim Hudson</p>
+  </td>
+  <td width=287 valign=top style='width:215.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Update based on list comments</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=102 valign=top style='width:76.45pt;border:solid windowtext 1.0pt;
+  border-top:none;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>wd01</p>
+  </td>
+  <td width=94 valign=top style='width:70.5pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>05-Sep-2018</p>
+  </td>
+  <td width=141 valign=top style='width:105.55pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Tim Hudson</p>
+  </td>
+  <td width=287 valign=top style='width:215.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>Initial Draft </p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal>&nbsp;</p>
+
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+
+</html>
